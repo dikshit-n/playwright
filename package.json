@@ -1,0 +1,13 @@
+{
+  "name": "playwright-gco-demo",
+  "version": "1.0.0",
+  "description": "Playwright → GCP Cloud Monitoring simulation demo",
+  "scripts": {
+    "test": "npx playwright test --headed",
+    "test:headless": "npx playwright test",
+    "report": "npx playwright show-report src/playwright-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.44.0"
+  }
+}

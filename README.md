@@ -1,226 +1,216 @@
-# Playwright with Python — Quick-Reference Guide
+# playwright-gco-demo
 
-> **Playwright 1.58.0** · **Python ≥ 3.9** · Sync API only
-> Sources: [playwright.dev/python](https://playwright.dev/python), [github.com/microsoft/playwright-python](https://github.com/microsoft/playwright-python), [pypi.org/project/playwright](https://pypi.org/project/playwright)
-
----
-
-## How Playwright Works
-
-Playwright controls Chromium, Firefox, and WebKit browsers through their native debugging protocols (Chrome DevTools Protocol for Chromium; equivalent internal protocols for Firefox and WebKit). Your test code talks to a single Playwright server process, which manages every browser instance.
-
-The object hierarchy follows a strict chain: a **Playwright** instance launches a **Browser**, which creates one or more **BrowserContexts**, each of which opens one or more **Pages**. A Page is where you interact with DOM elements.
-
-**Auto-waiting** means Playwright automatically waits for elements to be visible, enabled, and stable before performing actions like clicks or fills. You never need `time.sleep()` or manual wait logic.
-
-**Browser context isolation** means each `BrowserContext` behaves like a fresh incognito profile — cookies, localStorage, service workers, and cache are completely isolated between contexts, so tests cannot leak state into each other.
-
-### Object Hierarchy
-
-```
-Playwright
- └── Browser          (Chromium / Firefox / WebKit process)
-      └── BrowserContext   (isolated session — cookies, storage, cache)
-           └── Page        (single tab — DOM interaction happens here)
-                └── Locator → DOM Element
-```
-
-### Minimal Working Example
-
-```python
-from playwright.sync_api import sync_playwright
-
-def main() -> None:
-    with sync_playwright() as pw:
-        # Launch a Chromium browser in headless mode
-        browser = pw.chromium.launch(headless=True)
-        # Create an isolated browser context
-        context = browser.new_context()
-        # Open a new page (tab) inside the context
-        page = context.new_page()
-        page.goto("https://example.com")
-        print(page.title())  # "Example Domain"
-        # Tear down in reverse order
-        context.close()
-        browser.close()
-
-main()
-```
+A minimal learning artifact showing how Playwright test results can be captured,
+shaped into GCP Cloud Monitoring TimeSeries objects, and (simulated) pushed to
+Cloud Monitoring — so you can understand the Splunk → GCP synthetic-test
+migration end-to-end.
 
 ---
 
-## E2E Testing Scenarios
-
-All examples use `pytest-playwright`, which auto-injects a `page` fixture (one fresh `BrowserContext` + `Page` per test).
-
-### Scenario A — Page Navigation and Title Assertion
-
-Verify that navigating to a URL produces the expected page title.
-
-```python
-import re
-from playwright.sync_api import Page, expect
-
-def test_page_title(page: Page) -> None:
-    # Navigate to the target URL
-    page.goto("https://example.com")
-    # Assert the page title matches
-    expect(page).to_have_title(re.compile("Example Domain"))
-```
-
-### Scenario B — Form Fill and Submit
-
-Fill a login form using semantic locators, submit it, and assert a success message appears.
-
-```python
-from playwright.sync_api import Page, expect
-
-def test_login_form(page: Page) -> None:
-    page.goto("https://example.com/login")
-
-    # Fill form fields using accessible locators
-    page.get_by_label("Username").fill("testuser")
-    page.get_by_label("Password").fill("s3cureP@ss")
-
-    # Submit the form
-    page.get_by_role("button", name="Sign in").click()
-
-    # Assert success indicator is visible
-    expect(page.get_by_text("Welcome, testuser")).to_be_visible()
-```
-
-### Scenario C — Handling Multiple Pages (New Tab)
-
-Click a link that opens a new tab, switch to that tab, and verify its content.
-
-```python
-from playwright.sync_api import Page, expect
-
-def test_new_tab(page: Page) -> None:
-    page.goto("https://example.com")
-
-    # Listen for the new page event, then trigger it
-    with page.context.expect_page() as new_page_info:
-        page.get_by_role("link", name="Open docs").click()
-
-    # Obtain the new tab's Page object
-    new_page = new_page_info.value
-    new_page.wait_for_load_state()
-
-    # Assert content on the newly opened tab
-    expect(new_page).to_have_title(re.compile("Documentation"))
-```
-
-> **Note:** `import re` is needed at the top of this file for the `re.compile` call.
-
-### Scenario D — Network Request Interception
-
-Intercept an API call, return mocked JSON, and assert the page renders the mocked data.
-
-```python
-from playwright.sync_api import Page, Route, expect
-
-def test_mock_api(page: Page) -> None:
-    # Define the mock handler
-    def handle_route(route: Route) -> None:
-        route.fulfill(
-            status=200,
-            content_type="application/json",
-            body='[{"id": 1, "name": "Mocked Item"}]',
-        )
-
-    # Intercept GET requests to the /api/items endpoint
-    page.route("**/api/items", handle_route)
-
-    page.goto("https://example.com/items")
-
-    # Assert the page renders the mocked data
-    expect(page.get_by_text("Mocked Item")).to_be_visible()
-```
-
----
-
-## Python Setup and Usage
-
-### Installation
+## Quick start
 
 ```bash
-pip install playwright==1.58.0
-playwright install                   # downloads Chromium, Firefox, WebKit binaries
-pip install pytest-playwright         # pytest integration
+# 1. Install dependencies (only @playwright/test — no GCP SDK)
+npm install
+
+# 2. Install Chromium (only — keeps download small)
+npx playwright install chromium
+
+# 3. Run tests in headed mode (you will see a browser window open)
+npm test
+# equivalent to: npx playwright test --headed
+
+# 4. After the run, inspect results:
+npx playwright show-report          # opens playwright-report/index.html
+cat src/metrics-output/summary.json     # human-readable per-test summary
+ls src/metrics-output/gcp-timeseries-*  # full simulated GCP payload(s)
 ```
 
-### Project Structure
+---
+
+## What the three tests do
+
+| Test | Expected outcome | Why it exists |
+|------|-----------------|---------------|
+| `homepage title is correct` | PASS | Baseline healthy check — confirms the URL loads and the title is correct |
+| `page contains expected text` | FAIL (intentional) | Simulates a broken SLO — text that doesn't exist on the page |
+| `simulated slow synthetic check` | PASS, ~3 s | Produces a large `test_duration_ms` metric so you can see how latency shows up |
+
+---
+
+## What gets written to `metrics-output/`
+
+After each run you will find:
 
 ```
-my-project/
-├── tests/
-│   ├── conftest.py            # shared fixtures and config
-│   ├── test_navigation.py     # Scenario A & C
-│   └── test_forms.py          # Scenario B & D
-├── requirements.txt
-└── pytest.ini                 # (optional) pytest settings
+src/metrics-output/
+  results.json              ← raw Playwright JSON reporter output (see section below)
+  summary.json              ← human-friendly per-test summary written by custom reporter
+  gcp-timeseries-<ts>.json  ← simulated Cloud Monitoring TimeSeries payload
 ```
 
-### Running Tests
+---
 
-```bash
-# Run all tests (headless by default)
-pytest tests/
+## Playwright result format
 
-# Run with a visible browser window
-pytest tests/ --headed
+Playwright's built-in `--reporter=json` writes a single JSON file.
+The shape that matters for metric extraction:
 
-# Run on a specific browser engine
-pytest tests/ --browser firefox
-
-# Run a single test file
-pytest tests/test_navigation.py
-
-# Generate an HTML report
-pytest tests/ --html=report.html --self-contained-html
-```
-
-> The `--html` flag requires `pytest-html`. Install it with `pip install pytest-html`. [UNVERIFIED — check official docs for bundled report options in pytest-playwright]
-
-### conftest.py Example
-
-```python
-import pytest
-from typing import Dict, Any
-
-@pytest.fixture(scope="session")
-def browser_type_launch_args() -> Dict[str, Any]:
-    """Configure browser launch options for all tests."""
-    return {
-        "headless": True,
-        "slow_mo": 0,       # milliseconds delay between actions (useful for debugging)
+```jsonc
+{
+  "suites": [
+    {
+      "title": "example.spec.ts",         // → metric label: test_suite
+      "specs": [
+        {
+          "title": "homepage title is correct [PASS]", // → metric label: test_name
+          "tests": [
+            {
+              "projectName": "chromium",   // → metric label: browser
+              "results": [
+                {
+                  "status": "passed",       // "passed" | "failed" | "timedOut" | "skipped"
+                  "duration": 1823,         // milliseconds → GAUGE value for test_duration_ms
+                  "startTime": "2024-01-15T10:30:00.000Z",
+                  "errors": []             // non-empty on failure
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
-
-@pytest.fixture(scope="session")
-def browser_context_args() -> Dict[str, Any]:
-    """Configure context options — applies to every test's BrowserContext."""
-    return {
-        "base_url": "https://example.com",
-        "viewport": {"width": 1280, "height": 720},
-    }
+  ],
+  "stats": {
+    "expected": 2,
+    "unexpected": 1,
+    "duration": 8012      // total wall-clock ms for the whole run
+  }
+}
 ```
 
-When `base_url` is set, `page.goto("/login")` resolves to `https://example.com/login`.
+### Field → GCP metric mapping
 
-### Codegen
-
-Playwright ships a built-in test recorder called **Codegen**. It opens a browser, records your manual interactions, and outputs ready-to-use Python test code. Launch it with:
-
-```bash
-playwright codegen https://example.com
-```
+| Playwright JSON field | GCP TimeSeries field | Notes |
+|-----------------------|----------------------|-------|
+| `specs[].title` | `metric.labels.test_name` | sanitised: non-alphanumeric → `_` |
+| `suites[].title` | `metric.labels.test_suite` | usually the filename |
+| `tests[].projectName` | `metric.labels.browser` | `chromium`, `firefox`, `webkit` |
+| `results[].status` | `metric.labels.status` | raw string; also encoded as int |
+| `results[].duration` | `metric.points[].value.int64Value` | metric type: `test_duration_ms` |
+| `results[].status` (encoded) | `metric.points[].value.int64Value` | metric type: `test_result`; `passed=1`, `failed=0`, `skipped=-1` |
+| `results[].startTime` + `duration` | `metric.points[].interval.endTime` | RFC 3339 |
 
 ---
 
-## Further Reading
+## Why Playwright to replicate Splunk browser tests?
 
-- [Playwright Python API Reference](https://playwright.dev/python/docs/api/class-playwright)
-- [pytest-playwright Plugin Docs](https://playwright.dev/python/docs/test-runners)
-- [Locators Guide](https://playwright.dev/python/docs/locators)
-- [Network Interception](https://playwright.dev/python/docs/network)
+**Capabilities parity:** Splunk Synthetics' browser checks are built on Puppeteer
+under the hood (as of 2023 documentation). Playwright offers a superset of those
+capabilities: multi-step navigation, network interception, file upload, shadow DOM
+selectors, and built-in `expect` assertions with automatic retries.
+
+**Multi-browser without extra cost:** Playwright runs the same test script against
+Chromium, Firefox, and WebKit with a single `projects` config block. Splunk
+Synthetics charges per monitor execution; running against three browsers triples
+the cost. With self-hosted Playwright the only cost is the machine time.
+
+**Scriptability and version control:** Splunk Synthetics scripts live inside the
+Splunk UI with limited version-control support. Playwright tests are plain
+TypeScript files in a git repo — PRs, code review, and diff history are
+first-class.
+
+**Open-source vs lock-in:** Playwright is maintained by Microsoft and Apache-2.0
+licensed. Your test code is portable: the same `.spec.ts` file runs locally, in
+GitHub Actions, on any Linux box, and inside GCP Cloud Run Jobs. Splunk Synthetics
+scripts are tied to Splunk's runtime — if you leave Splunk, the scripts are useless.
+
+**Trace viewer and headed replay:** Playwright records a trace (network, DOM
+snapshots, console) that you can replay locally with `npx playwright show-trace`.
+Splunk provides video replay but it is locked behind the Splunk UI.
+
+**Limitations to acknowledge:** Playwright requires you to manage your own
+execution infrastructure (schedule, alerting, dashboards). Splunk Synthetics gives
+you all of that out of the box. The migration cost is real: you gain flexibility
+but give up the managed layer.
+
+---
+
+## Is Playwright something only GCP supports?
+
+**No. Playwright is completely observability-backend agnostic.**
+
+Playwright is a browser automation framework. It has no opinion about where
+results go after a test run. The output is:
+
+1. Exit code (0 = all pass, 1 = any failure) — consumed by any CI system.
+2. JSON report (`--reporter=json`) — a plain file you parse yourself.
+3. JUnit XML (`--reporter=junit`) — understood by Jenkins, Azure DevOps,
+   GitHub Actions test summaries, etc.
+4. HTML report — a self-contained viewer you open in any browser.
+
+GCP does not "support" Playwright in any privileged sense. What GCP provides is:
+
+- **Cloud Monitoring custom metrics** — an HTTP API that accepts any numeric
+  time-series data. You can push Playwright durations to it the same way you
+  would push application latency. [UNCERTAIN: GCP does not currently offer a
+  first-party Playwright integration or a dedicated "synthetic monitoring via
+  Playwright" product. Verify whether a managed offering has launched since
+  this was written.]
+- **Cloud Run Jobs / Cloud Scheduler** — a way to run Playwright on a cron
+  schedule without managing VMs. [UNCERTAIN: pricing and region support for
+  headed browser execution inside Cloud Run may have changed; verify before
+  committing to this approach.]
+
+The same Playwright tests could push metrics to:
+- **Datadog** (via `dogstatsd` or the Datadog API)
+- **Prometheus** (write a custom exporter, scrape with your Prometheus instance)
+- **Grafana Cloud** (via the Grafana Faro SDK or plain HTTP to Mimir)
+- **New Relic** (via New Relic's metric ingest API)
+- **Any time-series database** (InfluxDB, VictoriaMetrics, etc.)
+
+The custom reporter in this project (`reporters/gcp-metrics-reporter.ts`) is the
+only GCP-specific piece, and it is ~100 lines. Swapping it for a Datadog reporter
+requires changing only that file.
+
+---
+
+## Simulated GCP payload shape (3-line summary)
+
+```jsonc
+// Full body of a projects.timeSeries.create request
+// POST https://monitoring.googleapis.com/v3/projects/{PROJECT_ID}/timeSeries
+// VERIFY: https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/create
+{
+  "timeSeries": [
+    {
+      "metric": {
+        "type": "custom.googleapis.com/playwright/test_duration_ms",
+        "labels": { "test_name": "homepage_title_is_correct__PASS_", "status": "passed", "browser": "chromium", "test_suite": "example_spec_ts" }
+      },
+      "resource": { "type": "global", "labels": { "project_id": "YOUR_GCP_PROJECT_ID" } },
+      "metricKind": "GAUGE",
+      "valueType": "INT64",
+      "points": [{ "interval": { "endTime": "2024-01-15T10:30:01.823Z" }, "value": { "int64Value": "1823" } }]
+    }
+    // ... one duration series + one result series per test
+  ]
+}
+```
+
+Two time series per test: one for **duration** (INT64, milliseconds) and one for
+**result** (INT64: 1=pass, 0=fail, -1=skip). Labels carry the test name, suite,
+browser, and raw status string so you can filter in Cloud Monitoring.
+
+---
+
+## Files in this project
+
+| File | Purpose |
+|------|---------|
+| `package.json` | npm manifest; only dependency is `@playwright/test` |
+| `playwright.config.ts` | Test runner config: headed, slowMo, reporters |
+| `src/tests/example.spec.ts` | Three synthetic-style tests: pass / fail / slow |
+| `reporters/gcp-metrics-reporter.ts` | Custom reporter — converts results to GCP TimeSeries JSON |
+| `src/metrics-output/` | Written at runtime; contains simulated GCP payloads and summary |
+| `src/playwright-report/` | Written at runtime by built-in HTML reporter |

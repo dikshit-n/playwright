@@ -1,0 +1,4 @@
+node_modules/
+src/report/
+src/output/*.json
+src/results/

@@ -1,0 +1,13 @@
+{
+  "name": "playwright-browser-testing",
+  "version": "1.0.0",
+  "description": "Splunk → Playwright browser tests - manual",
+  "scripts": {
+    "test": "npx playwright test --headed",
+    "test:headless": "npx playwright test",
+    "report": "npx playwright show-report src/report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.44.0"
+  }
+}

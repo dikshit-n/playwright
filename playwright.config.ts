@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const isHeaded = process.env.HEADED === 'true';
+const isHeaded = Boolean(process.env.HEADED);
 
 export default defineConfig({
   testDir: './src/tests',

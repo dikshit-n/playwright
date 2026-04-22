@@ -1,24 +1,22 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const isHeaded = process.env.HEADED === 'true';
+
 export default defineConfig({
   testDir: './src/tests',
   outputDir: './src/results',
 
-  // Headed mode: you can watch every test run in a real browser window.
-  // Flip to false for unattended / CI runs.
   use: {
-    headless: false,
+    headless: !isHeaded,
     browserName: 'chromium',
-    // Slow-motion makes animations and clicks visible while watching.
-    launchOptions: { slowMo: 300 },
-    // Screenshots only on failure, so output stays clean.
+    launchOptions: { slowMo: isHeaded ? 300 : 0 },
     screenshot: 'only-on-failure',
-    // Keep videos off to avoid large files during learning.
     video: 'off',
   },
 
-  // Run tests sequentially so the headed browser is easy to follow.
-  workers: 1,
+  // Sequential workers in headed mode so the browser is easy to follow;
+  // parallel in headless for faster CI runs.
+  workers: isHeaded ? 1 : undefined,
 
   // Disable retries so each test result is deterministic for learning.
   retries: 0,

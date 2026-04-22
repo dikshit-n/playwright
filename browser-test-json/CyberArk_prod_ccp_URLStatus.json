@@ -1,0 +1,83 @@
+{
+    "test": {
+        "id": 21864,
+        "name": "CyberArk_prod_ccp_URLStatus",
+        "active": true,
+        "frequency": 5,
+        "schedulingStrategy": "round_robin",
+        "createdAt": "2025-08-21T17:54:03.100Z",
+        "updatedAt": "2025-12-05T11:10:06.652Z",
+        "locationIds": [
+            "private-spgi-corporate-us-west",
+            "private-spgi-corporate-us-east",
+            "private-spgi-corporate-ap-southeast-singapore",
+            "private-spgi-corporate-eu-central-frankfurt",
+            "private-spgi-corporate-ap-south-mumbai"
+        ],
+        "automaticRetries": 1,
+        "createdBy": "GU7hAZFAcAA",
+        "updatedBy": "F5VcJa3AcAI",
+        "type": "browser",
+        "customProperties": [
+            {
+                "key": "AppID",
+                "value": "ASP0002665"
+            },
+            {
+                "key": "Environment",
+                "value": "Production"
+            },
+            {
+                "key": "SupportGroup",
+                "value": "IDM_Moogsoft_QA"
+            }
+        ],
+        "lastRunStatus": "success",
+        "lastRunAt": "2026-04-22T18:15:36.000Z",
+        "lastRunCoreMetricsPublishedAt": "2026-04-22T18:15:45.000Z",
+        "lastRunLocationId": "private-spgi-corporate-eu-central-frankfurt",
+        "lastRunId": "586eb4d2-a754-44b4-bf8f-47f3ea3132a7",
+        "advancedSettings": {
+            "authentication": null,
+            "cookies": null,
+            "headers": null,
+            "hostOverrides": null,
+            "userAgent": null,
+            "verifyCertificates": false,
+            "collectInteractiveMetrics": true,
+            "chromeFlags": null,
+            "excludedFiles": null,
+            "certificateIds": []
+        },
+        "transactions": [
+            {
+                "name": "New synthetic transaction",
+                "steps": [
+                    {
+                        "name": "New step",
+                        "type": "go_to_url",
+                        "url": "https://ccp.spglobal.com/AIMWebService/V1.1/AIM.asmx",
+                        "action": "go_to_url",
+                        "options": {
+                            "url": "https://ccp.spglobal.com/AIMWebService/V1.1/AIM.asmx"
+                        }
+                    }
+                ]
+            }
+        ],
+        "device": {
+            "id": 1,
+            "label": "Default Desktop",
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64; Splunk Synthetics) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.7444.175 Safari/537.36",
+            "viewportWidth": 1366,
+            "viewportHeight": 768,
+            "networkConnection": {
+                "description": "Unthrottled",
+                "uploadBandwidth": null,
+                "downloadBandwidth": null,
+                "latency": null,
+                "packetLoss": null
+            }
+        }
+    }
+}

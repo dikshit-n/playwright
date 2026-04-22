@@ -1,0 +1,99 @@
+{
+    "test": {
+        "id": 7036,
+        "name": "CIQ Prod Performance Top 10 Health Check | DO NOT DELETE",
+        "active": true,
+        "frequency": 15,
+        "schedulingStrategy": "round_robin",
+        "createdAt": "2024-07-02T10:07:55.668Z",
+        "updatedAt": "2024-07-29T09:59:13.290Z",
+        "locationIds": [
+            "aws-us-east-1"
+        ],
+        "automaticRetries": 0,
+        "createdBy": "F5VcHbdAcAI",
+        "updatedBy": "F5VcHbdAcAI",
+        "type": "browser",
+        "customProperties": [
+            {
+                "key": "pipeline_repository",
+                "value": "ciqpro-farm-pagerduty"
+            },
+            {
+                "key": "pipeline_project",
+                "value": "SPGPSupport"
+            },
+            {
+                "key": "pipeline",
+                "value": "true"
+            },
+            {
+                "key": "environment",
+                "value": "prod"
+            },
+            {
+                "key": "application_name",
+                "value": "capitaliq"
+            },
+            {
+                "key": "scope",
+                "value": "TechOps-SRE"
+            },
+            {
+                "key": "SupportGroup",
+                "value": "TechOps-SRE"
+            },
+            {
+                "key": "applicationid",
+                "value": "b1515b10-1b61-b784-f4cb-a79b2d4bcbe2"
+            }
+        ],
+        "lastRunStatus": "success",
+        "lastRunAt": "2026-04-22T17:28:51.000Z",
+        "lastRunCoreMetricsPublishedAt": "2026-04-22T17:29:05.000Z",
+        "lastRunLocationId": "aws-us-east-1",
+        "lastRunId": "cc0539cd-204d-4bbb-8add-b6196b8ebff6",
+        "advancedSettings": {
+            "authentication": null,
+            "cookies": null,
+            "headers": null,
+            "hostOverrides": null,
+            "userAgent": null,
+            "verifyCertificates": true,
+            "collectInteractiveMetrics": true,
+            "chromeFlags": null,
+            "excludedFiles": null,
+            "certificateIds": []
+        },
+        "transactions": [
+            {
+                "name": "New synthetic transaction",
+                "steps": [
+                    {
+                        "name": "New step",
+                        "type": "go_to_url",
+                        "url": "https://www.capitaliq.com",
+                        "action": "go_to_url",
+                        "options": {
+                            "url": "https://www.capitaliq.com"
+                        }
+                    }
+                ]
+            }
+        ],
+        "device": {
+            "id": 1,
+            "label": "Default Desktop",
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64; Splunk Synthetics) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.7444.175 Safari/537.36",
+            "viewportWidth": 1366,
+            "viewportHeight": 768,
+            "networkConnection": {
+                "description": "Unthrottled",
+                "uploadBandwidth": null,
+                "downloadBandwidth": null,
+                "latency": null,
+                "packetLoss": null
+            }
+        }
+    }
+}

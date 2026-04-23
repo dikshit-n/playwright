@@ -23,6 +23,8 @@ npm run test:headless
 
 # 5. After the run, inspect results:
 npx playwright show-report          # opens report/index.html
+cat src/output/summary.json     # human-readable per-test summary
+ls src/output/metrics-report  # full simulated payload(s) to send to cloud (not in the right format yet)
 ```
 
 ## What gets written to `output/`
@@ -32,6 +34,8 @@ After each run you will find:
 ```
 src/output/
   results.json              ← raw Playwright JSON reporter output (see section below)
+  summary.json              ← human-friendly per-test summary written by custom reporter
+  metrics-report.json  ← metrics report to send to cloud (right now it is not converted in necessary format yet)
 ```
 
 ---

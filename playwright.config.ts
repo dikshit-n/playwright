@@ -5,6 +5,7 @@ const isHeaded = Boolean(process.env.HEADED);
 export default defineConfig({
   testDir: './src/tests',
   outputDir: './src/results',
+  timeout: 5000,
 
   use: {
     headless: !isHeaded,
@@ -28,7 +29,9 @@ export default defineConfig({
   reporter: [
     ['list'],
     ['html', { outputFolder: './src/report', open: 'never' }],
-    ['json', { outputFile: './src/output/results.json' }]
+    ['json', { outputFile: './src/output/results.json' }],
+    // Our custom metrics reporter (TypeScript compiled at runtime by Playwright).
+    ['./src/reporters/metrics-reporter.ts'],
   ],
 
   projects: [

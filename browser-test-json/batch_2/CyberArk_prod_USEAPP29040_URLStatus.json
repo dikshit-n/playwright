@@ -1,0 +1,83 @@
+{
+    "test": {
+        "id": 21867,
+        "name": "CyberArk_prod_USEAPP29040_URLStatus",
+        "active": true,
+        "frequency": 5,
+        "schedulingStrategy": "round_robin",
+        "createdAt": "2025-08-21T17:56:17.876Z",
+        "updatedAt": "2026-04-18T12:10:10.813Z",
+        "locationIds": [
+            "private-spgi-corporate-us-west",
+            "private-spgi-corporate-eu-central-frankfurt",
+            "private-spgi-corporate-ap-southeast-singapore",
+            "private-spgi-corporate-ap-south-mumbai",
+            "private-spgi-corporate-us-east"
+        ],
+        "automaticRetries": 0,
+        "createdBy": "GU7hAZFAcAA",
+        "updatedBy": "GKUw3cgAYAI",
+        "type": "browser",
+        "customProperties": [
+            {
+                "key": "AppID",
+                "value": "ASP0002665"
+            },
+            {
+                "key": "Environment",
+                "value": "Production"
+            },
+            {
+                "key": "SupportGroup",
+                "value": "IDM_Moogsoft_QA"
+            }
+        ],
+        "lastRunStatus": "success",
+        "lastRunAt": "2026-04-23T18:35:12.000Z",
+        "lastRunCoreMetricsPublishedAt": "2026-04-23T18:35:20.000Z",
+        "lastRunLocationId": "private-spgi-corporate-us-west",
+        "lastRunId": "f7b59349-a2a7-4895-befb-f2fc4ae953c2",
+        "advancedSettings": {
+            "authentication": null,
+            "cookies": null,
+            "headers": null,
+            "hostOverrides": null,
+            "userAgent": null,
+            "verifyCertificates": false,
+            "collectInteractiveMetrics": true,
+            "chromeFlags": null,
+            "excludedFiles": null,
+            "certificateIds": []
+        },
+        "transactions": [
+            {
+                "name": "New synthetic transaction",
+                "steps": [
+                    {
+                        "name": "New step",
+                        "type": "go_to_url",
+                        "url": "https://USEAPP29040.mhf.mhc/AIMWebService/V1.1/AIM.asmx",
+                        "action": "go_to_url",
+                        "options": {
+                            "url": "https://USEAPP29040.mhf.mhc/AIMWebService/V1.1/AIM.asmx"
+                        }
+                    }
+                ]
+            }
+        ],
+        "device": {
+            "id": 1,
+            "label": "Default Desktop",
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64; Splunk Synthetics) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.7444.175 Safari/537.36",
+            "viewportWidth": 1366,
+            "viewportHeight": 768,
+            "networkConnection": {
+                "description": "Unthrottled",
+                "uploadBandwidth": null,
+                "downloadBandwidth": null,
+                "latency": null,
+                "packetLoss": null
+            }
+        }
+    }
+}

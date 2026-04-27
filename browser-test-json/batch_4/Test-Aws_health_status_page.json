@@ -1,0 +1,76 @@
+{
+    "test": {
+        "id": 29726,
+        "name": "Test-Aws_health_status_page",
+        "active": true,
+        "frequency": 5,
+        "schedulingStrategy": "round_robin",
+        "createdAt": "2025-11-18T19:06:33.604Z",
+        "updatedAt": "2025-11-18T20:43:55.276Z",
+        "locationIds": [
+            "aws-ca-central-1",
+            "aws-us-east-1",
+            "aws-us-west-1",
+            "aws-us-west-2"
+        ],
+        "automaticRetries": 0,
+        "createdBy": "GvYQPOWAYAA",
+        "updatedBy": "GvYQPOWAYAA",
+        "type": "browser",
+        "customProperties": [],
+        "lastRunStatus": "failed",
+        "lastRunAt": "2026-04-27T18:36:55.000Z",
+        "lastRunCoreMetricsPublishedAt": "2026-04-27T18:37:20.000Z",
+        "lastRunLocationId": "aws-us-west-1",
+        "lastRunId": "dfaf469d-d817-482f-917c-cf98b807cf5d",
+        "advancedSettings": {
+            "authentication": null,
+            "cookies": null,
+            "headers": null,
+            "hostOverrides": null,
+            "userAgent": null,
+            "verifyCertificates": true,
+            "collectInteractiveMetrics": true,
+            "chromeFlags": null,
+            "excludedFiles": null,
+            "certificateIds": []
+        },
+        "transactions": [
+            {
+                "name": "New synthetic transaction",
+                "steps": [
+                    {
+                        "name": "New step",
+                        "type": "go_to_url",
+                        "url": "https://health.aws.amazon.com/health/status",
+                        "action": "go_to_url",
+                        "options": {
+                            "url": "https://health.aws.amazon.com/health/status"
+                        }
+                    },
+                    {
+                        "name": "New step",
+                        "type": "assert_text_present",
+                        "maxWaitTime": 10000,
+                        "maxWaitTimeDefault": false,
+                        "value": "No recent issues"
+                    }
+                ]
+            }
+        ],
+        "device": {
+            "id": 1,
+            "label": "Default Desktop",
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64; Splunk Synthetics) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.7444.175 Safari/537.36",
+            "viewportWidth": 1366,
+            "viewportHeight": 768,
+            "networkConnection": {
+                "description": "Unthrottled",
+                "uploadBandwidth": null,
+                "downloadBandwidth": null,
+                "latency": null,
+                "packetLoss": null
+            }
+        }
+    }
+}

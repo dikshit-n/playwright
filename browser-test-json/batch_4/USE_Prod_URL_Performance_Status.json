@@ -1,0 +1,168 @@
+{
+    "test": {
+        "id": 18382,
+        "name": "Artifactory: USE_Prod_URL_Performance_Status",
+        "active": true,
+        "frequency": 5,
+        "schedulingStrategy": "concurrent",
+        "createdAt": "2025-04-15T17:47:14.552Z",
+        "updatedAt": "2025-08-17T10:36:21.186Z",
+        "locationIds": [
+            "private-spgi-corporate-us-east",
+            "private-spgi-corporate-ap-south-mumbai",
+            "private-spgi-corporate-ap-southeast-singapore",
+            "private-spgi-corporate-us-west",
+            "private-spgi-corporate-eu-central-frankfurt"
+        ],
+        "automaticRetries": 1,
+        "createdBy": "GU7hAZFAcAA",
+        "updatedBy": "GU7hAZFAcAA",
+        "type": "browser",
+        "customProperties": [
+            {
+                "key": "ProductName",
+                "value": "Artifactory"
+            },
+            {
+                "key": "CleanTestName",
+                "value": "Artifactory USE PROD Performance"
+            },
+            {
+                "key": "AppID",
+                "value": "ASP0010648"
+            },
+            {
+                "key": "Environment",
+                "value": "Production"
+            }
+        ],
+        "lastRunStatus": "failed",
+        "lastRunAt": "2026-04-27T17:59:37.000Z",
+        "lastRunCoreMetricsPublishedAt": "2026-04-27T18:00:23.000Z",
+        "lastRunLocationId": "private-spgi-corporate-us-east",
+        "lastRunId": "fddcc337-ddce-473f-8898-f16d7161ffa3",
+        "advancedSettings": {
+            "authentication": null,
+            "cookies": null,
+            "headers": null,
+            "hostOverrides": null,
+            "userAgent": null,
+            "verifyCertificates": true,
+            "collectInteractiveMetrics": true,
+            "chromeFlags": null,
+            "excludedFiles": null,
+            "certificateIds": []
+        },
+        "transactions": [
+            {
+                "name": "Synthetic transaction 1",
+                "steps": [
+                    {
+                        "name": "Go to URL",
+                        "type": "go_to_url",
+                        "url": "https://artifactory-use-prod.cicd.spglobal.com/ui/login",
+                        "action": "go_to_url",
+                        "options": {
+                            "url": "https://artifactory-use-prod.cicd.spglobal.com/ui/login"
+                        }
+                    },
+                    {
+                        "name": "S&P Global - Sign In",
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "span.el-tooltip"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "id",
+                        "selector": "identifier"
+                    },
+                    {
+                        "name": null,
+                        "type": "enter_value",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "id",
+                        "selector": "identifier",
+                        "value": "svc_splunko11y@spglobal.com"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "button"
+                    },
+                    {
+                        "name": null,
+                        "type": "enter_value",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[2]/div[2]/div/main/div/div/div/div[2]/form/div/div[4]/div/div/input",
+                        "value": "{{env.svc_splunko11y}}"
+                    },
+                    {
+                        "name": "S&P Global - Signing in...",
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "div:nth-of-type(5) > button"
+                    },
+                    {
+                        "name": "New step",
+                        "type": "assert_text_present",
+                        "maxWaitTime": 500,
+                        "maxWaitTimeDefault": false,
+                        "value": "Packages"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 500,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "[data-cy='user-menu-button'] span"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "li:nth-of-type(4) span.menu-item"
+                    }
+                ]
+            }
+        ],
+        "device": {
+            "id": 1,
+            "label": "Default Desktop",
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64; Splunk Synthetics) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.7444.175 Safari/537.36",
+            "viewportWidth": 1366,
+            "viewportHeight": 768,
+            "networkConnection": {
+                "description": "Unthrottled",
+                "uploadBandwidth": null,
+                "downloadBandwidth": null,
+                "latency": null,
+                "packetLoss": null
+            }
+        }
+    }
+}

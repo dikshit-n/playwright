@@ -1,0 +1,134 @@
+{
+    "test": {
+        "id": 5128,
+        "name": "Okta_Non_Prod_Internal_Preview_Dashboard_Uptime",
+        "active": true,
+        "frequency": 5,
+        "schedulingStrategy": "round_robin",
+        "createdAt": "2024-03-24T12:23:06.332Z",
+        "updatedAt": "2025-04-09T00:39:48.942Z",
+        "locationIds": [
+            "private-spgi-corporate-us-east",
+            "private-spgi-corporate-ap-south-mumbai",
+            "private-spgi-corporate-ap-southeast-singapore",
+            "private-spgi-corporate-eu-central-frankfurt",
+            "private-spgi-corporate-us-west"
+        ],
+        "automaticRetries": 0,
+        "createdBy": null,
+        "updatedBy": "GXm0tuqAgAA",
+        "type": "browser",
+        "customProperties": [
+            {
+                "key": "ProductName",
+                "value": "Okta"
+            },
+            {
+                "key": "CleanTestName",
+                "value": "Okta Preview Dashboard Uptime"
+            },
+            {
+                "key": "AppID",
+                "value": "ASP0002118"
+            },
+            {
+                "key": "Environment",
+                "value": "Lower Environment"
+            }
+        ],
+        "lastRunStatus": "failed",
+        "lastRunAt": "2026-04-27T19:01:44.000Z",
+        "lastRunCoreMetricsPublishedAt": "2026-04-27T19:02:44.000Z",
+        "lastRunLocationId": "private-spgi-corporate-us-west",
+        "lastRunId": "86c6a578-ff59-4472-a4d2-df93afd7741f",
+        "advancedSettings": {
+            "authentication": null,
+            "cookies": null,
+            "headers": null,
+            "hostOverrides": null,
+            "userAgent": null,
+            "verifyCertificates": false,
+            "collectInteractiveMetrics": true,
+            "chromeFlags": null,
+            "excludedFiles": null,
+            "certificateIds": []
+        },
+        "transactions": [
+            {
+                "name": "Synthetic transaction 1",
+                "steps": [
+                    {
+                        "name": "Go to URL",
+                        "type": "go_to_url",
+                        "url": "https://spglobal.oktapreview.com/login/default",
+                        "action": "go_to_url",
+                        "options": {
+                            "url": "https://spglobal.oktapreview.com/login/default"
+                        }
+                    },
+                    {
+                        "name": "UserId",
+                        "type": "enter_value",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "//*[@id=\"identifier\"]",
+                        "value": "datadogintdev@spglobal.com"
+                    },
+                    {
+                        "name": "Password",
+                        "type": "enter_value",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "//*[@id=\"credentials.passcode\"]",
+                        "value": "Jyd@j9edh2"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "div:nth-of-type(5) > button"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "o-dropdown-menu > div > button"
+                    },
+                    {
+                        "name": "Logout",
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "a.danger"
+                    }
+                ]
+            }
+        ],
+        "device": {
+            "id": 1,
+            "label": "Default Desktop",
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64; Splunk Synthetics) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.7444.175 Safari/537.36",
+            "viewportWidth": 1366,
+            "viewportHeight": 768,
+            "networkConnection": {
+                "description": "Unthrottled",
+                "uploadBandwidth": null,
+                "downloadBandwidth": null,
+                "latency": null,
+                "packetLoss": null
+            }
+        }
+    }
+}

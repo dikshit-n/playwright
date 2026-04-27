@@ -1,0 +1,158 @@
+{
+    "test": {
+        "id": 18700,
+        "name": "Tanium_Internal_Browser_Status",
+        "active": true,
+        "frequency": 5,
+        "schedulingStrategy": "round_robin",
+        "createdAt": "2025-05-07T10:56:35.578Z",
+        "updatedAt": "2025-05-07T10:56:35.587Z",
+        "locationIds": [
+            "private-spgi-corporate-us-east",
+            "private-spgi-corporate-ap-south-mumbai",
+            "private-spgi-corporate-ap-southeast-singapore",
+            "private-spgi-corporate-eu-central-frankfurt",
+            "private-spgi-corporate-us-west"
+        ],
+        "automaticRetries": 0,
+        "createdBy": "GXm0tuqAgAA",
+        "updatedBy": "GXm0tuqAgAA",
+        "type": "browser",
+        "customProperties": [
+            {
+                "key": "ProductName",
+                "value": "Tanium"
+            },
+            {
+                "key": "CleanTestName",
+                "value": "Tanium Lab Browser Status"
+            },
+            {
+                "key": "Environment",
+                "value": "Lower Environment"
+            }
+        ],
+        "lastRunStatus": "failed",
+        "lastRunAt": "2026-04-27T18:56:32.000Z",
+        "lastRunCoreMetricsPublishedAt": "2026-04-27T18:57:13.000Z",
+        "lastRunLocationId": "private-spgi-corporate-eu-central-frankfurt",
+        "lastRunId": "f8ce8eaa-8a88-466d-af12-77369cb094fd",
+        "advancedSettings": {
+            "authentication": null,
+            "cookies": null,
+            "headers": null,
+            "hostOverrides": null,
+            "userAgent": null,
+            "verifyCertificates": false,
+            "collectInteractiveMetrics": true,
+            "chromeFlags": null,
+            "excludedFiles": null,
+            "certificateIds": []
+        },
+        "transactions": [
+            {
+                "name": "Synthetic transaction 1",
+                "steps": [
+                    {
+                        "name": "Go to URL",
+                        "type": "go_to_url",
+                        "url": "https://tanium-dev.mhf.mhc/",
+                        "action": "go_to_url",
+                        "options": {
+                            "url": "https://tanium-dev.mhf.mhc/"
+                        }
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div/div/div[2]/div/div/div[2]/div/button"
+                    },
+                    {
+                        "name": null,
+                        "type": "enter_value",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "id",
+                        "selector": "-username",
+                        "value": "svc_splunko11y"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "id",
+                        "selector": "-password"
+                    },
+                    {
+                        "name": null,
+                        "type": "enter_value",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "id",
+                        "selector": "-password",
+                        "value": "Gnvr)VF1*z9YP*?[.=rn=m$CW"
+                    },
+                    {
+                        "name": "New step",
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div/div/div[2]/div/div/div/form/div[1]/div[2]/div/div/div/div[3]/button/div"
+                    },
+                    {
+                        "name": "New step",
+                        "type": "wait",
+                        "duration": 10000
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[1]/div/div[2]/div/div[1]/div[5]/div[2]/div/div/div[7]/button/div/div/div/div"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[1]/div/div[2]/div/div[1]/div[5]/div[2]/div/div/div[7]/div/div/div[5]/div"
+                    },
+                    {
+                        "name": "New step",
+                        "type": "wait",
+                        "duration": 10000
+                    }
+                ]
+            }
+        ],
+        "device": {
+            "id": 1,
+            "label": "Default Desktop",
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64; Splunk Synthetics) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.7444.175 Safari/537.36",
+            "viewportWidth": 1366,
+            "viewportHeight": 768,
+            "networkConnection": {
+                "description": "Unthrottled",
+                "uploadBandwidth": null,
+                "downloadBandwidth": null,
+                "latency": null,
+                "packetLoss": null
+            }
+        }
+    }
+}

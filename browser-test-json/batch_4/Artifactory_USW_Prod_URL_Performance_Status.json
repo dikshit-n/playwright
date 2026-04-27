@@ -1,0 +1,125 @@
+{
+    "test": {
+        "id": 18383,
+        "name": "Artifactory_USW_Prod_URL_Performance_Status",
+        "active": true,
+        "frequency": 5,
+        "schedulingStrategy": "concurrent",
+        "createdAt": "2025-04-15T17:59:37.628Z",
+        "updatedAt": "2025-08-17T12:40:44.361Z",
+        "locationIds": [
+            "private-spgi-corporate-us-east",
+            "private-spgi-corporate-ap-south-mumbai",
+            "private-spgi-corporate-ap-southeast-singapore",
+            "private-spgi-corporate-eu-central-frankfurt",
+            "private-spgi-corporate-us-west"
+        ],
+        "automaticRetries": 1,
+        "createdBy": "GU7hAZFAcAA",
+        "updatedBy": "GKz7fRgAYAA",
+        "type": "browser",
+        "customProperties": [
+            {
+                "key": "ProductName",
+                "value": "Artifactory"
+            },
+            {
+                "key": "CleanTestName",
+                "value": "Artifactory USW PROD Performance"
+            },
+            {
+                "key": "AppID",
+                "value": "ASP0010648"
+            },
+            {
+                "key": "Environment",
+                "value": "Production"
+            }
+        ],
+        "lastRunStatus": "failed",
+        "lastRunAt": "2026-04-27T18:31:47.000Z",
+        "lastRunCoreMetricsPublishedAt": "2026-04-27T18:32:54.000Z",
+        "lastRunLocationId": "private-spgi-corporate-ap-southeast-singapore",
+        "lastRunId": "48747df6-f17b-44b4-a5a4-b8bade9067eb",
+        "advancedSettings": {
+            "authentication": null,
+            "cookies": null,
+            "headers": null,
+            "hostOverrides": null,
+            "userAgent": null,
+            "verifyCertificates": true,
+            "collectInteractiveMetrics": true,
+            "chromeFlags": null,
+            "excludedFiles": null,
+            "certificateIds": []
+        },
+        "transactions": [
+            {
+                "name": "Synthetic transaction 1",
+                "steps": [
+                    {
+                        "name": "Go to URL",
+                        "type": "go_to_url",
+                        "url": "https://artifactory-usw-prod.cicd.spglobal.com/ui/login",
+                        "action": "go_to_url",
+                        "options": {
+                            "url": "https://artifactory-usw-prod.cicd.spglobal.com/ui/login"
+                        }
+                    },
+                    {
+                        "name": null,
+                        "type": "enter_value",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "div.basic-auth-container > div:nth-of-type(1) input",
+                        "value": "svc_splunko11y"
+                    },
+                    {
+                        "name": null,
+                        "type": "enter_value",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[4]/div/div[2]/div/div/div[2]/div/div[2]/div/div/form/div[2]/div[2]/div/div/input",
+                        "value": "{{env.svc_splunko11y}}"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "div.el-form-item-button-container span"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[4]/div/div[2]/div/div[2]/div[1]/div[2]/div[3]/section[2]/div[2]/div[2]/div/div/div"
+                    }
+                ]
+            }
+        ],
+        "device": {
+            "id": 1,
+            "label": "Default Desktop",
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64; Splunk Synthetics) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.7444.175 Safari/537.36",
+            "viewportWidth": 1366,
+            "viewportHeight": 768,
+            "networkConnection": {
+                "description": "Unthrottled",
+                "uploadBandwidth": null,
+                "downloadBandwidth": null,
+                "latency": null,
+                "packetLoss": null
+            }
+        }
+    }
+}

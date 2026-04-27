@@ -1,0 +1,201 @@
+{
+    "test": {
+        "id": 13819,
+        "name": "Splunk_O11Y_Ratings_URL_status",
+        "active": true,
+        "frequency": 10,
+        "schedulingStrategy": "concurrent",
+        "createdAt": "2025-02-25T11:42:11.246Z",
+        "updatedAt": "2025-05-22T11:08:19.316Z",
+        "locationIds": [
+            "private-spgi-corporate-us-west",
+            "private-spgi-corporate-us-east",
+            "private-spgi-corporate-ap-southeast-singapore",
+            "private-spgi-corporate-eu-central-frankfurt",
+            "private-spgi-corporate-ap-south-mumbai"
+        ],
+        "automaticRetries": 0,
+        "createdBy": "GU7hAZFAcAA",
+        "updatedBy": "GU7hAZFAcAA",
+        "type": "browser",
+        "customProperties": [
+            {
+                "key": "ProductName",
+                "value": "Splunk Observability"
+            },
+            {
+                "key": "CleanTestName",
+                "value": "Splunk O11Y Ratings URL"
+            },
+            {
+                "key": "AppID",
+                "value": "ASP0011215"
+            },
+            {
+                "key": "Environment",
+                "value": "Production"
+            }
+        ],
+        "lastRunStatus": "failed",
+        "lastRunAt": "2026-04-27T18:02:37.000Z",
+        "lastRunCoreMetricsPublishedAt": "2026-04-27T18:06:28.000Z",
+        "lastRunLocationId": "private-spgi-corporate-ap-southeast-singapore",
+        "lastRunId": "5824865e-bd1a-4427-80fa-6c36b8b65398",
+        "advancedSettings": {
+            "authentication": null,
+            "cookies": null,
+            "headers": null,
+            "hostOverrides": null,
+            "userAgent": null,
+            "verifyCertificates": true,
+            "collectInteractiveMetrics": true,
+            "chromeFlags": null,
+            "excludedFiles": null,
+            "certificateIds": []
+        },
+        "transactions": [
+            {
+                "name": "Synthetic transaction 1",
+                "steps": [
+                    {
+                        "name": "Go to OKTA URL",
+                        "type": "go_to_url",
+                        "url": "https://spglobal.okta.com/login/default",
+                        "action": "go_to_url",
+                        "options": {
+                            "url": "https://spglobal.okta.com/login/default"
+                        }
+                    },
+                    {
+                        "name": "Click on email",
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "id",
+                        "selector": "identifier"
+                    },
+                    {
+                        "name": "email",
+                        "type": "enter_value",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "id",
+                        "selector": "identifier",
+                        "value": "svc_splunko11y@spglobal.com"
+                    },
+                    {
+                        "name": "password",
+                        "type": "enter_value",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "//*[@id=\"credentials.passcode\"]",
+                        "value": "{{env.svc_splunko11y}}"
+                    },
+                    {
+                        "name": "Next",
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "div:nth-of-type(5) > button"
+                    },
+                    {
+                        "name": "Go to Splunk O11Y Ratings URL",
+                        "type": "go_to_url",
+                        "url": "https://spgi-ratings.signalfx.com/#/home",
+                        "action": "go_to_url",
+                        "options": {
+                            "url": "https://spgi-ratings.signalfx.com/#/home"
+                        }
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "div.sf-fill-extents > div > div > div > div > a"
+                    },
+                    {
+                        "name": "Next",
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "//*[@id=\"okta-sign-in\"]/div/div/div/div[2]/form/div/div[4]/button"
+                    },
+                    {
+                        "name": "Password",
+                        "type": "enter_value",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "//*[@id=\"credentials.passcode\"]",
+                        "value": "{{env.svc_splunko11y}}"
+                    },
+                    {
+                        "name": "Verify",
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "//*[@id=\"okta-sign-in\"]/div/div/div/div[2]/form/div/div[5]/button"
+                    },
+                    {
+                        "name": "New step",
+                        "type": "wait",
+                        "duration": 2000
+                    },
+                    {
+                        "name": "Validating keyword",
+                        "type": "assert_text_present",
+                        "maxWaitTime": 10000,
+                        "maxWaitTimeDefault": false,
+                        "value": "Get started"
+                    },
+                    {
+                        "name": "click on profile",
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[1]/div/div/div[4]/header/div[2]/div[3]/button/span/div/div[3]"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[3]/div[2]/div/div[1]/div/div/div/div[1]/div/div[3]/button/span/span"
+                    }
+                ]
+            }
+        ],
+        "device": {
+            "id": 1,
+            "label": "Default Desktop",
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64; Splunk Synthetics) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.7444.175 Safari/537.36",
+            "viewportWidth": 1366,
+            "viewportHeight": 768,
+            "networkConnection": {
+                "description": "Unthrottled",
+                "uploadBandwidth": null,
+                "downloadBandwidth": null,
+                "latency": null,
+                "packetLoss": null
+            }
+        }
+    }
+}

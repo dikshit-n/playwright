@@ -16,9 +16,10 @@ test('Splunk_O11Y_Ratings_URL_status', async ({ page }) => {
       await page.goto('https://spgi-ratings.signalfx.com/#/home');
 
       await page.locator('div.sf-fill-extents > div > div > div > div > a').click();
-      await page.waitForLoadState('load', { timeout: 2000 });
+      await page.waitForLoadState('load', { timeout: 3000 });
 
       await page.locator('#okta-sign-in').getByRole('button', { name: 'Next' }).click();
+      // TODO: fix sign in card repeats
 
       await page.locator('[id="credentials.passcode"]').fill('{{env.svc_splunko11y}}');
 

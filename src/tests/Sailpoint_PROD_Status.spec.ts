@@ -12,6 +12,7 @@ test('Sailpoint_PROD_Status', async ({ page }) => {
       await page.locator('button').click();
       await page.waitForLoadState('load', { timeout: 2000 });
 
+      // TODO: fix password input flow is not showing up
       await page.locator('[id="credentials.passcode"]').click();
 
       await page.locator('[id="credentials.passcode"]').fill('W?7z3GxH:gA?m=J');

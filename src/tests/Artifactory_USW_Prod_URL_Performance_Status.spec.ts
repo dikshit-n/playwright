@@ -9,7 +9,7 @@ test('Artifactory_USW_Prod_URL_Performance_Status', async ({ page }) => {
 
       await page.locator('div.basic-auth-container').locator('input[type="password"]').fill('{{env.svc_splunko11y}}');
 
-      await page.locator('div.el-form-item-button-container span').click();
+      await page.locator('div.el-p-form-item-button-container span').click();
 
       await page.locator('section:nth-of-type(2)').locator('div:nth-of-type(2) > div:nth-of-type(2) > div > div > div').click();
     } catch {

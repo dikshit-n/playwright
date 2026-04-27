@@ -17,7 +17,7 @@ test('Okta_Non_Prod_Internal_Preview_Dashboard_Uptime', async ({ page }) => {
       await page.locator('o-dropdown-menu > div > button').click();
       await page.waitForLoadState('load', { timeout: 2000 });
 
-      await page.locator('a.danger').click();
+      await page.locator('[data-se="topbar--sign-out"]').click();
       await page.waitForLoadState('load', { timeout: 2000 });
     } catch {
       // ignore script break error

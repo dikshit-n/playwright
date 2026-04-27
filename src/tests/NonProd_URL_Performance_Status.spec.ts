@@ -5,7 +5,7 @@ test('Artifactory: NonProd_URL_Performance_Status', async ({ page }) => {
     try {
       await page.goto('https://artifactory-use-nonprod.cicd.spglobal.com/ui/login');
 
-      await page.locator('span.el-tooltip').click();
+      await page.locator('span.tooltip-wrapper').click();
       await page.waitForLoadState('load', { timeout: 2000 });
 
       await page.locator('#identifier').fill('svc_splunko11y@spglobal.com');
@@ -13,6 +13,7 @@ test('Artifactory: NonProd_URL_Performance_Status', async ({ page }) => {
       await page.locator('button').click();
       await page.waitForLoadState('load', { timeout: 2000 });
 
+      // TODO: fix password input flow is not showing up
       await page.locator('main').locator('input[type="password"]').fill('{{env.svc_splunko11y}}');
 
       await page.locator('div:nth-of-type(5) > button').click();

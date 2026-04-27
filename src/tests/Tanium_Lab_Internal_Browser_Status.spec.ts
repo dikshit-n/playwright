@@ -3,6 +3,7 @@ import { test } from '@playwright/test';
 test('Tanium_Lab_Internal_Browser_Status', async ({ page }) => {
   await test.step('Synthetic transaction 1', async () => {
     try {
+      // TODO: This page cannot be reached
       await page.goto('https://tanium-lab.mhf.mhc/');
 
       await page.getByRole('button').first().click();

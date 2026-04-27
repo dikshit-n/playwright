@@ -7,11 +7,17 @@ test('Tanium_Internal_Browser_Status', async ({ page }) => {
 
       await page.getByRole('button').first().click();
 
-      await page.locator('[id="-username"]').fill('svc_splunko11y');
+      await page.waitForTimeout(2000);
 
-      await page.locator('[id="-password"]').click();
+      await page.locator('#identifier').click()
+      
+      await page.locator('#identifier').fill('svc_splunko11y@spglobal.com');
 
-      await page.locator('[id="-password"]').fill('Gnvr)VF1*z9YP*?[.=rn=m$CW');
+      await page.locator('button').click();
+      await page.waitForLoadState('load', { timeout: 2000 });
+
+      // TODO: fix password input flow is not showing up
+      await page.locator('[id="credentials.passcode"]').fill('Gnvr)VF1*z9YP*?[.=rn=m$CW');
 
       await page.locator('form').getByRole('button', { name: 'Sign In' }).click();
 

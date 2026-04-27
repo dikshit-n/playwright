@@ -12,8 +12,7 @@ test('CyberArk:CyberArk_Portal_Okta_Uptime', async ({ page }) => {
 
       await page.locator('input[type="password"]').fill('W?7z3GxH:gA?m=J');
 
-      // TODO: fragile XPath from Splunk — consider replacing with getByRole/getByText
-      await page.locator('xpath=//*[@id="okta-sign-in"]/div/div/div/div[2]/form/div/div[5]/button').click();
+      await page.locator('#okta-sign-in').getByRole('button', { name: 'Verify' }).click();
       await page.waitForLoadState('load', { timeout: 550 });
 
       await page.waitForTimeout(40000);
@@ -31,7 +30,7 @@ test('CyberArk:CyberArk_Portal_Okta_Uptime', async ({ page }) => {
 
       await page.waitForTimeout(5000);
 
-      await page.locator('xpath=//*[@data-testid="user-info-sign-out"]/span[2]').click();
+      await page.locator('[data-testid="user-info-sign-out"] span').nth(1).click();
 
       await page.waitForTimeout(1000);
 

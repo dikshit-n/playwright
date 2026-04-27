@@ -13,8 +13,7 @@ test('Artifactory: NonProd_URL_Performance_Status', async ({ page }) => {
       await page.locator('button').click();
       await page.waitForLoadState('load', { timeout: 2000 });
 
-      // TODO: fragile absolute XPath from Splunk — consider replacing with getByRole/getByText
-      await page.locator('xpath=/html/body/div[2]/div[2]/div/main/div/div/div/div[2]/form/div/div[4]/div/div/input').fill('{{env.svc_splunko11y}}');
+      await page.locator('main').locator('input[type="password"]').fill('{{env.svc_splunko11y}}');
 
       await page.locator('div:nth-of-type(5) > button').click();
       await page.waitForLoadState('load', { timeout: 2000 });
@@ -23,8 +22,7 @@ test('Artifactory: NonProd_URL_Performance_Status', async ({ page }) => {
 
       await page.locator('[data-cy="user-menu-button"] span').click();
 
-      // TODO: fragile absolute XPath from Splunk — consider replacing with getByRole/getByText
-      await page.locator('xpath=/html/body/ul/li[4]/div/a').click();
+      await page.locator('body > ul').getByRole('link', { name: 'Sign Out' }).click();
       await page.waitForLoadState('load', { timeout: 200 });
     } catch {
       // ignore script break error

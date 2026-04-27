@@ -15,8 +15,7 @@ test('Artifactory: USE_Prod_URL_Performance_Status', async ({ page }) => {
       await page.locator('button').click();
       await page.waitForLoadState('load', { timeout: 2000 });
 
-      // TODO: fragile absolute XPath from Splunk — consider replacing with getByRole/getByText
-      await page.locator('xpath=/html/body/div[2]/div[2]/div/main/div/div/div/div[2]/form/div/div[4]/div/div/input').fill('{{env.svc_splunko11y}}');
+      await page.locator('main').locator('input[type="password"]').fill('{{env.svc_splunko11y}}');
 
       await page.locator('div:nth-of-type(5) > button').click();
       await page.waitForLoadState('load', { timeout: 2000 });

@@ -19,11 +19,9 @@ test('Sailpoint_PROD_Status', async ({ page }) => {
       await page.locator('div:nth-of-type(5) > button').click();
       await page.waitForLoadState('load', { timeout: 2000 });
 
-      // TODO: fragile absolute XPath from Splunk — consider replacing with getByRole/getByText
-      await page.locator('xpath=/html/body/div[2]/div[1]/div[1]/nav/ul[2]/li[3]').click();
+      await page.locator('nav ul:nth-child(2) > li:nth-child(3)').click();
 
-      // TODO: fragile absolute XPath from Splunk — consider replacing with getByRole/getByText
-      await page.locator('xpath=/html/body/div[2]/div[1]/div[1]/nav/ul[2]/li[3]/ul/li[2]/a').click();
+      await page.locator('nav ul:nth-child(2) > li:nth-child(3) ul').getByRole('link', { name: 'Sign Out' }).click();
       await page.waitForLoadState('load', { timeout: 2000 });
     } catch {
       // ignore script break error

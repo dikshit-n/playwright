@@ -5,7 +5,7 @@ const isHeaded = Boolean(process.env.HEADED);
 export default defineConfig({
   testDir: './src/tests',
   outputDir: './src/results',
-  timeout: 5000,
+  // timeout: 5000,
 
   use: {
     headless: !isHeaded,

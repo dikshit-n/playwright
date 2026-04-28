@@ -1,0 +1,188 @@
+{
+    "test": {
+        "id": 18273,
+        "name": "GitHub_QA_CICD_Browser_Login",
+        "active": true,
+        "frequency": 10,
+        "schedulingStrategy": "round_robin",
+        "createdAt": "2025-04-10T09:16:32.598Z",
+        "updatedAt": "2025-07-08T12:12:29.728Z",
+        "locationIds": [
+            "private-spgi-corporate-us-east"
+        ],
+        "automaticRetries": 0,
+        "createdBy": "F5VcG58AgAE",
+        "updatedBy": "GKntdgoAYAA",
+        "type": "browser",
+        "customProperties": [
+            {
+                "key": "ProductName",
+                "value": "GitHub"
+            },
+            {
+                "key": "CleanTestName",
+                "value": "Github_QA_CICD_Browser_Login"
+            },
+            {
+                "key": "AppID",
+                "value": "ASP0010889"
+            },
+            {
+                "key": "Environment",
+                "value": "Lower Environment"
+            }
+        ],
+        "lastRunStatus": "failed",
+        "lastRunAt": "2026-04-28T18:38:28.000Z",
+        "lastRunCoreMetricsPublishedAt": "2026-04-28T18:40:12.000Z",
+        "lastRunLocationId": "private-spgi-corporate-us-east",
+        "lastRunId": "0777cd64-5527-47bb-a9bd-7933613fad3b",
+        "advancedSettings": {
+            "authentication": null,
+            "cookies": null,
+            "headers": null,
+            "hostOverrides": null,
+            "userAgent": null,
+            "verifyCertificates": true,
+            "collectInteractiveMetrics": true,
+            "chromeFlags": null,
+            "excludedFiles": null,
+            "certificateIds": []
+        },
+        "transactions": [
+            {
+                "name": "Synthetic transaction 1",
+                "steps": [
+                    {
+                        "name": "Go to URL",
+                        "type": "go_to_url",
+                        "url": "https://githubqa.cicd.spglobal.com/",
+                        "action": "go_to_url",
+                        "options": {
+                            "url": "https://githubqa.cicd.spglobal.com/"
+                        }
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "div.application-main a"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "id",
+                        "selector": "identifier"
+                    },
+                    {
+                        "name": null,
+                        "type": "enter_value",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "id",
+                        "selector": "identifier",
+                        "value": "svc_splunko11y@spglobal.com"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "button"
+                    },
+                    {
+                        "name": "New step",
+                        "type": "wait",
+                        "duration": 400
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 100,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "name",
+                        "selector": "credentials\\.passcode"
+                    },
+                    {
+                        "name": null,
+                        "type": "enter_value",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "name",
+                        "selector": "credentials\\.passcode",
+                        "value": "{{env.svc_splunko11y}}"
+                    },
+                    {
+                        "name": "S&P Global - Signing in...",
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "div:nth-of-type(5) > button"
+                    },
+                    {
+                        "name": null,
+                        "type": "assert_element_present",
+                        "maxWaitTime": 10000,
+                        "maxWaitTimeDefault": false,
+                        "selectorType": "css",
+                        "selector": "div.AppHeader-context-full span"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 500,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[1]/div[1]/header/div[1]/div[2]/div[3]/deferred-side-panel/include-fragment/user-drawer-side-panel/button/span/span/img"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "li:nth-of-type(18) span"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "input[type='submit']"
+                    }
+                ]
+            }
+        ],
+        "device": {
+            "id": 1,
+            "label": "Default Desktop",
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64; Splunk Synthetics) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.7444.175 Safari/537.36",
+            "viewportWidth": 1366,
+            "viewportHeight": 768,
+            "networkConnection": {
+                "description": "Unthrottled",
+                "uploadBandwidth": null,
+                "downloadBandwidth": null,
+                "latency": null,
+                "packetLoss": null
+            }
+        }
+    }
+}

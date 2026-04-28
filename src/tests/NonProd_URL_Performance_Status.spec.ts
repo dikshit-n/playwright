@@ -14,7 +14,7 @@ test('Artifactory: NonProd_URL_Performance_Status', async ({ page }) => {
       await page.waitForLoadState('load', { timeout: 2000 });
 
       // TODO: fix password input flow is not showing up
-      await page.locator('main').locator('input[type="password"]').fill('{{env.svc_splunko11y}}');
+      await page.locator('main').locator('input[type="password"]').fill(process.env.svc_splunko11y!);
 
       await page.locator('div:nth-of-type(5) > button').click();
       await page.waitForLoadState('load', { timeout: 2000 });

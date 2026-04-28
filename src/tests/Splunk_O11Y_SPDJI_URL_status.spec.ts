@@ -9,7 +9,7 @@ test('Splunk O11Y SPDJI URL status', async ({ page }) => {
 
       await page.locator('#identifier').fill('svc_splunko11y@spglobal.com');
 
-      await page.locator('[id="credentials.passcode"]').fill('{{env.svc_splunko11y}}');
+      await page.locator('[id="credentials.passcode"]').fill(process.env.svc_splunko11y!);
 
       await page.locator('div:nth-of-type(5) > button').click();
 
@@ -21,7 +21,7 @@ test('Splunk O11Y SPDJI URL status', async ({ page }) => {
       await page.locator('#okta-sign-in').getByRole('button', { name: 'Next' }).click();
       // TODO: User not assigned to this application error fix
 
-      await page.locator('[id="credentials.passcode"]').fill('{{env.svc_splunko11y}}');
+      await page.locator('[id="credentials.passcode"]').fill(process.env.svc_splunko11y!);
 
       await page.locator('#okta-sign-in').getByRole('button', { name: 'Verify' }).click();
 

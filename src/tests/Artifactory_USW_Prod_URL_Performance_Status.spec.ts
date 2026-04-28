@@ -7,7 +7,7 @@ test('Artifactory_USW_Prod_URL_Performance_Status', async ({ page }) => {
 
       await page.locator('div.basic-auth-container > div:nth-of-type(1) input').fill('svc_splunko11y');
 
-      await page.locator('div.basic-auth-container').locator('input[type="password"]').fill('{{env.svc_splunko11y}}');
+      await page.locator('div.basic-auth-container').locator('input[type="password"]').fill(process.env.svc_splunko11y!);
 
       await page.locator('div.el-p-form-item-button-container span').click();
 

@@ -1,0 +1,193 @@
+{
+    "test": {
+        "id": 18317,
+        "name": "SonarQube_Prod_Browser_Login",
+        "active": true,
+        "frequency": 10,
+        "schedulingStrategy": "round_robin",
+        "createdAt": "2025-04-15T10:58:29.209Z",
+        "updatedAt": "2025-08-04T06:45:09.839Z",
+        "locationIds": [
+            "private-spgi-corporate-us-east",
+            "private-spgi-corporate-us-west"
+        ],
+        "automaticRetries": 0,
+        "createdBy": "F5VcG58AgAE",
+        "updatedBy": "GKq1QETAcAA",
+        "type": "browser",
+        "customProperties": [
+            {
+                "key": "ProductName",
+                "value": "Sonarqube"
+            },
+            {
+                "key": "CleanTestName",
+                "value": "SonarQube Prod Browser Login"
+            },
+            {
+                "key": "AppID",
+                "value": "ASP0011195"
+            },
+            {
+                "key": "Environment",
+                "value": "Production"
+            }
+        ],
+        "lastRunStatus": "failed",
+        "lastRunAt": "2026-04-28T18:26:45.000Z",
+        "lastRunCoreMetricsPublishedAt": "2026-04-28T18:27:24.000Z",
+        "lastRunLocationId": "private-spgi-corporate-us-west",
+        "lastRunId": "2a629384-ba19-44f3-83dc-0f5c7476435d",
+        "advancedSettings": {
+            "authentication": null,
+            "cookies": null,
+            "headers": null,
+            "hostOverrides": null,
+            "userAgent": null,
+            "verifyCertificates": true,
+            "collectInteractiveMetrics": true,
+            "chromeFlags": null,
+            "excludedFiles": null,
+            "certificateIds": []
+        },
+        "transactions": [
+            {
+                "name": "Synthetic transaction 1",
+                "steps": [
+                    {
+                        "name": "Go to URL",
+                        "type": "go_to_url",
+                        "url": "https://sonar-use-prod.cicd.spglobal.com/projects",
+                        "action": "go_to_url",
+                        "options": {
+                            "url": "https://sonar-use-prod.cicd.spglobal.com/projects"
+                        }
+                    },
+                    {
+                        "name": "SonarQube",
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "//*[@id=\"global-navigation\"]/div/div/div/div[3]/a"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div/div/div[1]/div/div[1]/div/a/span"
+                    },
+                    {
+                        "name": "Unsupported step keyDown",
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[2]/div[2]/div/main/div/div/div/div[2]/form/div/div[2]/div/div/input"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[2]/div[2]/div/main/div/div/div/div[2]/form/div/div[2]/div/div/input"
+                    },
+                    {
+                        "name": null,
+                        "type": "enter_value",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[2]/div[2]/div/main/div/div/div/div[2]/form/div/div[2]/div/div/input",
+                        "value": "svc_splunko11y@spglobal.com"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[2]/div[2]/div/main/div/div/div/div[2]/form/div/div[4]/button"
+                    },
+                    {
+                        "name": "Unsupported step keyDown",
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[2]/div[2]/div/main/div/div/div/div[2]/form/div/div[4]/div/div/input"
+                    },
+                    {
+                        "name": null,
+                        "type": "enter_value",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[2]/div[2]/div/main/div/div/div/div[2]/form/div/div[4]/div/div/input",
+                        "value": "{{env.svc_splunko11y}}"
+                    },
+                    {
+                        "name": "S&P Global - Signing in...",
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[2]/div[2]/div/main/div/div/div/div[2]/form/div/div[5]/button"
+                    },
+                    {
+                        "name": null,
+                        "type": "assert_element_present",
+                        "maxWaitTime": 10000,
+                        "maxWaitTimeDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[1]/div/div[1]/div/nav/div/div/a/img"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[1]/div/div[1]/div/nav/div/div/div/div[3]/a/div"
+                    },
+                    {
+                        "name": "SonarQube",
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[1]/div/div[1]/div/nav/div/div/div/div[3]/div/div/ul/li[4]/a"
+                    }
+                ]
+            }
+        ],
+        "device": {
+            "id": 1,
+            "label": "Default Desktop",
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64; Splunk Synthetics) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.7444.175 Safari/537.36",
+            "viewportWidth": 1366,
+            "viewportHeight": 768,
+            "networkConnection": {
+                "description": "Unthrottled",
+                "uploadBandwidth": null,
+                "downloadBandwidth": null,
+                "latency": null,
+                "packetLoss": null
+            }
+        }
+    }
+}

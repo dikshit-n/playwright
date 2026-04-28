@@ -21,7 +21,7 @@ test('Splunk_O11Y_OSTTRA_URL_status', async ({ page }) => {
       await page.locator('#okta-sign-in').getByRole('button', { name: 'Next' }).click();
       // TODO: User not assigned to this application error fix
 
-      await page.locator('[id="credentials.passcode"]').fill('{{env.svc_splunko11y}}');
+      await page.locator('[id="credentials.passcode"]').fill(process.env.svc_splunko11y!);
 
       await page.locator('#okta-sign-in').getByRole('button', { name: 'Verify' }).click();
 

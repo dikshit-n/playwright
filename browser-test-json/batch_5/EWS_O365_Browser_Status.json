@@ -1,0 +1,154 @@
+{
+    "test": {
+        "id": 14347,
+        "name": "EWS O365 Browser Status",
+        "active": true,
+        "frequency": 5,
+        "schedulingStrategy": "round_robin",
+        "createdAt": "2025-03-25T18:33:15.152Z",
+        "updatedAt": "2025-04-25T16:50:28.745Z",
+        "locationIds": [
+            "private-spgi-corporate-us-east",
+            "private-spgi-corporate-ap-southeast-singapore"
+        ],
+        "automaticRetries": 0,
+        "createdBy": "GXm0tuqAgAA",
+        "updatedBy": "GXm0tuqAgAA",
+        "type": "browser",
+        "customProperties": [
+            {
+                "key": "ProductName",
+                "value": "O365"
+            },
+            {
+                "key": "CleanTestName",
+                "value": "O365 EWS Browser Test"
+            },
+            {
+                "key": "Environment",
+                "value": "Production"
+            }
+        ],
+        "lastRunStatus": "failed",
+        "lastRunAt": "2026-04-28T18:26:22.000Z",
+        "lastRunCoreMetricsPublishedAt": "2026-04-28T18:26:40.000Z",
+        "lastRunLocationId": "private-spgi-corporate-ap-southeast-singapore",
+        "lastRunId": "8f7a3dc2-837d-4adb-890d-0dc56a4a4944",
+        "advancedSettings": {
+            "authentication": null,
+            "cookies": null,
+            "headers": null,
+            "hostOverrides": null,
+            "userAgent": null,
+            "verifyCertificates": true,
+            "collectInteractiveMetrics": true,
+            "chromeFlags": null,
+            "excludedFiles": null,
+            "certificateIds": []
+        },
+        "transactions": [
+            {
+                "name": "New synthetic transaction",
+                "steps": [
+                    {
+                        "name": "Go to URL",
+                        "type": "go_to_url",
+                        "url": "https://ews.spglobal.com/ecp",
+                        "action": "go_to_url",
+                        "options": {
+                            "url": "https://ews.spglobal.com/ecp"
+                        }
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "id",
+                        "selector": "username"
+                    },
+                    {
+                        "name": null,
+                        "type": "clear_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "id",
+                        "selector": "username"
+                    },
+                    {
+                        "name": null,
+                        "type": "enter_value",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "id",
+                        "selector": "username",
+                        "value": "svc_splunko11y@spglobal.com"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "id",
+                        "selector": "password"
+                    },
+                    {
+                        "name": null,
+                        "type": "enter_value",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "id",
+                        "selector": "password",
+                        "value": "{{env.svc_splunko11y}}"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "div.logonContainer div.signInEnter span"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "#nameDropDown td.EnabledButtonPart span"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "#nameDropDown_toolbar_UserName_DropDown span"
+                    }
+                ]
+            }
+        ],
+        "device": {
+            "id": 1,
+            "label": "Default Desktop",
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64; Splunk Synthetics) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.7444.175 Safari/537.36",
+            "viewportWidth": 1366,
+            "viewportHeight": 768,
+            "networkConnection": {
+                "description": "Unthrottled",
+                "uploadBandwidth": null,
+                "downloadBandwidth": null,
+                "latency": null,
+                "packetLoss": null
+            }
+        }
+    }
+}

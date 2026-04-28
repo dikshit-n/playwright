@@ -1,0 +1,202 @@
+{
+    "test": {
+        "id": 18227,
+        "name": "SonarQube_QA_Browser_Login",
+        "active": true,
+        "frequency": 10,
+        "schedulingStrategy": "round_robin",
+        "createdAt": "2025-04-07T12:00:50.213Z",
+        "updatedAt": "2025-12-16T17:23:22.434Z",
+        "locationIds": [
+            "private-spgi-corporate-us-east"
+        ],
+        "automaticRetries": 0,
+        "createdBy": "F5VcG58AgAE",
+        "updatedBy": "GKq1QETAcAA",
+        "type": "browser",
+        "customProperties": [
+            {
+                "key": "ProductName",
+                "value": "Sonarqube"
+            },
+            {
+                "key": "CleanTestName",
+                "value": "SonarQube QA Browser Login"
+            },
+            {
+                "key": "AppID",
+                "value": "ASP0011195"
+            },
+            {
+                "key": "Environment",
+                "value": "Quality Assurance"
+            }
+        ],
+        "lastRunStatus": "failed",
+        "lastRunAt": "2026-04-28T18:30:36.000Z",
+        "lastRunCoreMetricsPublishedAt": "2026-04-28T18:31:02.000Z",
+        "lastRunLocationId": "private-spgi-corporate-us-east",
+        "lastRunId": "24bf15f1-662c-4592-ab21-bd6da0e69430",
+        "advancedSettings": {
+            "authentication": null,
+            "cookies": null,
+            "headers": null,
+            "hostOverrides": null,
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64; Splunk Synthetics) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.6533.88 Safari/537.36",
+            "verifyCertificates": true,
+            "collectInteractiveMetrics": true,
+            "chromeFlags": null,
+            "excludedFiles": null,
+            "certificateIds": []
+        },
+        "transactions": [
+            {
+                "name": "Synthetic transaction 1",
+                "steps": [
+                    {
+                        "name": "Go to URL",
+                        "type": "go_to_url",
+                        "url": "https://sonar-use-qa.cicd.spglobal.com/sessions/new?return_to=%2F",
+                        "action": "go_to_url",
+                        "options": {
+                            "url": "https://sonar-use-qa.cicd.spglobal.com/sessions/new?return_to=%2F"
+                        }
+                    },
+                    {
+                        "name": "New step",
+                        "type": "wait",
+                        "duration": 200
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "span"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "id",
+                        "selector": "identifier"
+                    },
+                    {
+                        "name": null,
+                        "type": "enter_value",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "id",
+                        "selector": "identifier",
+                        "value": "svc_splunko11y@spglobal.com"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "button"
+                    },
+                    {
+                        "name": "New step",
+                        "type": "wait",
+                        "duration": 400
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "name",
+                        "selector": "credentials\\.passcode"
+                    },
+                    {
+                        "name": null,
+                        "type": "enter_value",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "name",
+                        "selector": "credentials\\.passcode",
+                        "value": "{{env.svc_splunko11y}}"
+                    },
+                    {
+                        "name": "S&P Global - Signing in...",
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 200,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "div:nth-of-type(5) > button"
+                    },
+                    {
+                        "name": "New step",
+                        "type": "assert_element_present",
+                        "maxWaitTime": 10000,
+                        "maxWaitTimeDefault": false,
+                        "selectorType": "css",
+                        "selector": "div.big-spacer-top > div:nth-of-type(1) > span"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "div.js-user-authenticated div"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "#global-navigation > div > div > div li:nth-of-type(4) > a"
+                    },
+                    {
+                        "name": "Go to URL",
+                        "type": "go_to_url",
+                        "url": "https://sonar-use-qa.cicd.spglobal.com/sessions/new?return_to=%2F",
+                        "action": "go_to_url",
+                        "options": {
+                            "url": "https://sonar-use-qa.cicd.spglobal.com/sessions/new?return_to=%2F"
+                        }
+                    },
+                    {
+                        "name": "Go to URL",
+                        "type": "go_to_url",
+                        "url": "https://sonar-use-qa.cicd.spglobal.com/sessions/new?return_to=%2F",
+                        "action": "go_to_url",
+                        "options": {
+                            "url": "https://sonar-use-qa.cicd.spglobal.com/sessions/new?return_to=%2F"
+                        }
+                    }
+                ]
+            }
+        ],
+        "device": {
+            "id": 1,
+            "label": "Default Desktop",
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64; Splunk Synthetics) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.7444.175 Safari/537.36",
+            "viewportWidth": 1366,
+            "viewportHeight": 768,
+            "networkConnection": {
+                "description": "Unthrottled",
+                "uploadBandwidth": null,
+                "downloadBandwidth": null,
+                "latency": null,
+                "packetLoss": null
+            }
+        }
+    }
+}

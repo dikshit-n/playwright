@@ -9,7 +9,7 @@ test('Splunk_O11Y_Ratings_URL_status', async ({ page }) => {
 
       await page.locator('#identifier').fill('svc_splunko11y@spglobal.com');
 
-      await page.locator('[id="credentials.passcode"]').fill('{{env.svc_splunko11y}}');
+      await page.locator('[id="credentials.passcode"]').fill(process.env.svc_splunko11y!);
 
       await page.locator('div:nth-of-type(5) > button').click();
 
@@ -19,9 +19,9 @@ test('Splunk_O11Y_Ratings_URL_status', async ({ page }) => {
       await page.waitForLoadState('load', { timeout: 3000 });
 
       await page.locator('#okta-sign-in').getByRole('button', { name: 'Next' }).click();
-      // TODO: fix sign in card repeats
+      // TODO: fix, sign in card repeats
 
-      await page.locator('[id="credentials.passcode"]').fill('{{env.svc_splunko11y}}');
+      await page.locator('[id="credentials.passcode"]').fill(process.env.svc_splunko11y!);
 
       await page.locator('#okta-sign-in').getByRole('button', { name: 'Verify' }).click();
 

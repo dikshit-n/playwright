@@ -1,0 +1,161 @@
+{
+    "test": {
+        "id": 7752,
+        "name": "CyberArt_Conjur_PRD_BrowserLogin",
+        "active": true,
+        "frequency": 5,
+        "schedulingStrategy": "round_robin",
+        "createdAt": "2024-08-06T16:18:52.450Z",
+        "updatedAt": "2024-11-18T18:58:06.469Z",
+        "locationIds": [
+            "private-spgi-corporate-us-east"
+        ],
+        "automaticRetries": 1,
+        "createdBy": "F5VcFr9AYAA",
+        "updatedBy": "GU7hAZFAcAA",
+        "type": "browser",
+        "customProperties": [
+            {
+                "key": "ProductName",
+                "value": "CyberArk"
+            },
+            {
+                "key": "AppID",
+                "value": "ASP0002665"
+            },
+            {
+                "key": "SupportGroup",
+                "value": "OKTA"
+            },
+            {
+                "key": "CyberArk",
+                "value": "\tASP0002665"
+            }
+        ],
+        "lastRunStatus": "failed",
+        "lastRunAt": "2026-04-28T18:27:59.000Z",
+        "lastRunCoreMetricsPublishedAt": "2026-04-28T18:30:40.000Z",
+        "lastRunLocationId": "private-spgi-corporate-us-east",
+        "lastRunId": "1f64f109-ac68-4c0e-8ef9-5ea1019d1580",
+        "advancedSettings": {
+            "authentication": null,
+            "cookies": null,
+            "headers": null,
+            "hostOverrides": null,
+            "userAgent": null,
+            "verifyCertificates": false,
+            "collectInteractiveMetrics": true,
+            "chromeFlags": null,
+            "excludedFiles": null,
+            "certificateIds": []
+        },
+        "transactions": [
+            {
+                "name": "Synthetic transaction 1",
+                "steps": [
+                    {
+                        "name": "Copy of Go to URL ",
+                        "type": "go_to_url",
+                        "url": "https://aav4233.id.cyberark.cloud/login?redirectUrl=https%3A%2F%2Fspgi.cyberark.cloud%2Fsecretsmgr",
+                        "action": "go_to_url",
+                        "options": {
+                            "url": "https://aav4233.id.cyberark.cloud/login?redirectUrl=https%3A%2F%2Fspgi.cyberark.cloud%2Fsecretsmgr"
+                        }
+                    },
+                    {
+                        "name": "New step",
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "#usernameForm input"
+                    },
+                    {
+                        "name": "UserId",
+                        "type": "enter_value",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "#usernameForm input",
+                        "value": "SpgiCyberArk.Test@spglobal.com"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "#usernameForm button"
+                    },
+                    {
+                        "name": "Password",
+                        "type": "enter_value",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "//input[@type='password']",
+                        "value": "W?7z3GxH:gA?m=J"
+                    },
+                    {
+                        "name": "New step",
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "div:nth-of-type(5) > button"
+                    },
+                    {
+                        "name": "New step",
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "[data-testid='user-details-bay-button'] > i"
+                    },
+                    {
+                        "name": "Wait for 5 Sec",
+                        "type": "wait",
+                        "duration": 5000
+                    },
+                    {
+                        "name": "Logout",
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "[data-testid='user-info-sign-out'] > span > span"
+                    },
+                    {
+                        "name": "New step",
+                        "type": "assert_element_present",
+                        "maxWaitTime": 10000,
+                        "maxWaitTimeDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "//button[@type='button']"
+                    }
+                ]
+            }
+        ],
+        "device": {
+            "id": 1,
+            "label": "Default Desktop",
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64; Splunk Synthetics) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.7444.175 Safari/537.36",
+            "viewportWidth": 1366,
+            "viewportHeight": 768,
+            "networkConnection": {
+                "description": "Unthrottled",
+                "uploadBandwidth": null,
+                "downloadBandwidth": null,
+                "latency": null,
+                "packetLoss": null
+            }
+        }
+    }
+}

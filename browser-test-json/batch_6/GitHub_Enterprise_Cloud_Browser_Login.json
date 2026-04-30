@@ -1,0 +1,179 @@
+{
+    "test": {
+        "id": 18386,
+        "name": "GitHub Enterprise Cloud Browser Login",
+        "active": true,
+        "frequency": 1,
+        "schedulingStrategy": "round_robin",
+        "createdAt": "2025-04-15T18:27:03.131Z",
+        "updatedAt": "2025-06-30T08:47:23.941Z",
+        "locationIds": [
+            "private-spgi-corporate-us-east"
+        ],
+        "automaticRetries": 0,
+        "createdBy": "F5VcG58AgAE",
+        "updatedBy": "GKntdgoAYAA",
+        "type": "browser",
+        "customProperties": [
+            {
+                "key": "CleanTestName",
+                "value": "Github Enterprise Cloud Browser Login"
+            },
+            {
+                "key": "AppID",
+                "value": "ASP0010889"
+            },
+            {
+                "key": "Environment",
+                "value": "Production"
+            }
+        ],
+        "lastRunStatus": "failed",
+        "lastRunAt": "2026-04-29T23:33:20.000Z",
+        "lastRunCoreMetricsPublishedAt": "2026-04-29T23:33:38.000Z",
+        "lastRunLocationId": "private-spgi-corporate-us-east",
+        "lastRunId": "76717830-8aa3-47e7-931f-633fe431e418",
+        "advancedSettings": {
+            "authentication": null,
+            "cookies": null,
+            "headers": null,
+            "hostOverrides": null,
+            "userAgent": null,
+            "verifyCertificates": true,
+            "collectInteractiveMetrics": true,
+            "chromeFlags": null,
+            "excludedFiles": null,
+            "certificateIds": []
+        },
+        "transactions": [
+            {
+                "name": "New synthetic transaction",
+                "steps": [
+                    {
+                        "name": "Go to URL",
+                        "type": "go_to_url",
+                        "url": "https://github.com/enterprises/spglobal/sso",
+                        "action": "go_to_url",
+                        "options": {
+                            "url": "https://github.com/enterprises/spglobal/sso"
+                        }
+                    },
+                    {
+                        "name": "Initiating Single Sign-On",
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[1]/div[3]/main/div/div[2]/form/button/span"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[2]/div[2]/div/main/div/div/div/div[2]/form/div/div[2]/div/div/input"
+                    },
+                    {
+                        "name": "Unsupported step keyUp",
+                        "type": "enter_value",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[2]/div[2]/div/main/div/div/div/div[2]/form/div/div[2]/div/div/input",
+                        "value": "svc_splunko11y@spglobal.com"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[2]/div[2]/div/main/div/div/div/div[2]/form/div/div[4]/button"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[2]/div[2]/div/main/div/div/div/div[2]/form/div/div[4]/div/div/input"
+                    },
+                    {
+                        "name": null,
+                        "type": "enter_value",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[2]/div[2]/div/main/div/div/div/div[2]/form/div/div[4]/div/div/input",
+                        "value": "{{env.svc_splunko11y}}"
+                    },
+                    {
+                        "name": "New step",
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[2]/div[2]/div/main/div/div/div/div[2]/form/div/div[5]/button"
+                    },
+                    {
+                        "name": null,
+                        "type": "assert_element_present",
+                        "maxWaitTime": 10000,
+                        "maxWaitTimeDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[1]/div[1]/header/div[1]/div[1]/span"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[1]/div[1]/header/div[2]/div[2]/div[4]/deferred-side-panel/include-fragment/react-partial-anchor/button/span/span/img"
+                    },
+                    {
+                        "name": "Logout",
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[4]/div/div/div/div[2]/div/ul/li[23]/a/span[3]/span[1]"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[1]/div[4]/main/div/div[3]/div/div[2]/form/input[3]"
+                    }
+                ]
+            }
+        ],
+        "device": {
+            "id": 1,
+            "label": "Default Desktop",
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64; Splunk Synthetics) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.7444.175 Safari/537.36",
+            "viewportWidth": 1366,
+            "viewportHeight": 768,
+            "networkConnection": {
+                "description": "Unthrottled",
+                "uploadBandwidth": null,
+                "downloadBandwidth": null,
+                "latency": null,
+                "packetLoss": null
+            }
+        }
+    }
+}

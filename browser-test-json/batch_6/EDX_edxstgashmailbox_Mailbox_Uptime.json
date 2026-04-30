@@ -1,0 +1,122 @@
+{
+    "test": {
+        "id": 5016,
+        "name": "EDX:edxstgashmailbox:Mailbox_Uptime",
+        "active": true,
+        "frequency": 5,
+        "schedulingStrategy": "round_robin",
+        "createdAt": "2024-03-22T19:23:42.497Z",
+        "updatedAt": "2024-10-21T08:19:04.417Z",
+        "locationIds": [
+            "private-spgi-corporate-us-east"
+        ],
+        "automaticRetries": 0,
+        "createdBy": null,
+        "updatedBy": "GXm0tuqAgAA",
+        "type": "browser",
+        "customProperties": [
+            {
+                "key": "ProductName",
+                "value": "EDX"
+            },
+            {
+                "key": "AppID",
+                "value": "ASP0002675"
+            },
+            {
+                "key": "SupportGroup",
+                "value": "EDXStg"
+            }
+        ],
+        "lastRunStatus": "failed",
+        "lastRunAt": "2026-04-29T23:26:48.000Z",
+        "lastRunCoreMetricsPublishedAt": "2026-04-29T23:27:04.000Z",
+        "lastRunLocationId": "private-spgi-corporate-us-east",
+        "lastRunId": "e59870d8-eed8-42c5-b91b-1ddffea6e980",
+        "advancedSettings": {
+            "authentication": null,
+            "cookies": null,
+            "headers": null,
+            "hostOverrides": null,
+            "userAgent": null,
+            "verifyCertificates": false,
+            "collectInteractiveMetrics": true,
+            "chromeFlags": null,
+            "excludedFiles": null,
+            "certificateIds": []
+        },
+        "transactions": [
+            {
+                "name": "Synthetic transaction 1",
+                "steps": [
+                    {
+                        "name": "Go to URL",
+                        "type": "go_to_url",
+                        "url": "https://edxstgashmailbox.mhf.mhc/mailbox/",
+                        "action": "go_to_url",
+                        "options": {
+                            "url": "https://edxstgashmailbox.mhf.mhc/mailbox/"
+                        }
+                    },
+                    {
+                        "name": "UserId",
+                        "type": "enter_value",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "tr:nth-of-type(3) input",
+                        "value": "FTPMon"
+                    },
+                    {
+                        "name": "Password",
+                        "type": "enter_value",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "tr:nth-of-type(6) input",
+                        "value": "25FTPMon"
+                    },
+                    {
+                        "name": "Mailbox Interface MBI",
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "css",
+                        "selector": "tr:nth-of-type(9) input"
+                    },
+                    {
+                        "name": "Switch frame",
+                        "type": "switch_to_iframe",
+                        "selectorType": "name",
+                        "selector": "contents"
+                    },
+                    {
+                        "name": "LogOut",
+                        "type": "run_javascript",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": false,
+                        "value": "xpath = \"//a[contains(.,'Log Out')]\"\ndocument.evaluate( xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click()"
+                    }
+                ]
+            }
+        ],
+        "device": {
+            "id": 1,
+            "label": "Default Desktop",
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64; Splunk Synthetics) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.7444.175 Safari/537.36",
+            "viewportWidth": 1366,
+            "viewportHeight": 768,
+            "networkConnection": {
+                "description": "Unthrottled",
+                "uploadBandwidth": null,
+                "downloadBandwidth": null,
+                "latency": null,
+                "packetLoss": null
+            }
+        }
+    }
+}

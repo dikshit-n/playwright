@@ -22,6 +22,7 @@ test('GitHub_QA_CICD_Browser_Login', async ({ page }) => {
 
       await page.locator('div:nth-of-type(5) > button').click();
       await page.waitForLoadState('load', { timeout: 2000 });
+      // TODO: fix, sign in card repeats
 
       await expect(page.locator('div.AppHeader-context-full span')).toBeAttached({ timeout: 10000 });
 

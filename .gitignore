@@ -3,3 +3,4 @@ node_modules/
 src/report/
 src/output/*.json
 src/results/
+src/.DS_Store

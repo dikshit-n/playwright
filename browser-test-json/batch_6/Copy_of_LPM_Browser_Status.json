@@ -1,0 +1,143 @@
+{
+    "test": {
+        "id": 19204,
+        "name": "Copy of LPM_Browser_Status",
+        "active": true,
+        "frequency": 2,
+        "schedulingStrategy": "concurrent",
+        "createdAt": "2025-06-05T13:08:10.329Z",
+        "updatedAt": "2025-06-05T14:26:22.402Z",
+        "locationIds": [
+            "private-spgi-corporate-us-east"
+        ],
+        "automaticRetries": 0,
+        "createdBy": "F5VcFr9AYAA",
+        "updatedBy": "F5VcFr9AYAA",
+        "type": "browser",
+        "customProperties": [
+            {
+                "key": "ProductName",
+                "value": "DS-OutSystems"
+            },
+            {
+                "key": "AppID",
+                "value": "ASP0013587"
+            },
+            {
+                "key": "Environment",
+                "value": "Production"
+            }
+        ],
+        "lastRunStatus": "failed",
+        "lastRunAt": "2026-04-29T23:31:40.000Z",
+        "lastRunCoreMetricsPublishedAt": "2026-04-29T23:32:09.000Z",
+        "lastRunLocationId": "private-spgi-corporate-us-east",
+        "lastRunId": "f5c81a17-8de1-4511-afcc-dfba45491cb7",
+        "advancedSettings": {
+            "authentication": null,
+            "cookies": null,
+            "headers": null,
+            "hostOverrides": null,
+            "userAgent": null,
+            "verifyCertificates": true,
+            "collectInteractiveMetrics": true,
+            "chromeFlags": null,
+            "excludedFiles": null,
+            "certificateIds": []
+        },
+        "transactions": [
+            {
+                "name": "Synthetic transaction 1",
+                "steps": [
+                    {
+                        "name": "Go to URL",
+                        "type": "go_to_url",
+                        "url": "https://tools.spglobal.com/LPM/",
+                        "action": "go_to_url",
+                        "options": {
+                            "url": "https://tools.spglobal.com/LPM/"
+                        }
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 200,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[2]/div[2]/div/main/div/div/div/div[2]/form/div/div[2]/div/div/input"
+                    },
+                    {
+                        "name": null,
+                        "type": "enter_value",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 500,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[2]/div[2]/div/main/div/div/div/div[2]/form/div/div[2]/div/div/input",
+                        "value": "svc_splunko11y@spglobal.com"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[2]/div[2]/div/main/div/div/div/div[2]/form/div/div[4]/button"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 500,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[2]/div[2]/div/main/div/div/div/div[2]/form/div/div[4]/div/div/input"
+                    },
+                    {
+                        "name": null,
+                        "type": "enter_value",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 500,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[2]/div[2]/div/main/div/div/div/div[2]/form/div/div[4]/div/div/input",
+                        "value": "{{env.svc_splunko11y}}"
+                    },
+                    {
+                        "name": "S&P Global - Signing in...",
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div[2]/div[2]/div/main/div/div/div/div[2]/form/div/div[5]/button"
+                    },
+                    {
+                        "name": null,
+                        "type": "assert_element_present",
+                        "maxWaitTime": 10000,
+                        "maxWaitTimeDefault": false,
+                        "selectorType": "xpath",
+                        "selector": "/html/body/div/div/div/div[1]/div[1]/header/div/div[1]/div/div/div[3]/span"
+                    }
+                ]
+            }
+        ],
+        "device": {
+            "id": 1,
+            "label": "Default Desktop",
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64; Splunk Synthetics) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.7444.175 Safari/537.36",
+            "viewportWidth": 1366,
+            "viewportHeight": 768,
+            "networkConnection": {
+                "description": "Unthrottled",
+                "uploadBandwidth": null,
+                "downloadBandwidth": null,
+                "latency": null,
+                "packetLoss": null
+            }
+        }
+    }
+}

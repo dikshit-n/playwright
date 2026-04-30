@@ -1,0 +1,127 @@
+{
+    "test": {
+        "id": 6561,
+        "name": "Spark-Assist-UAT-URL-Reachability",
+        "active": true,
+        "frequency": 2,
+        "schedulingStrategy": "round_robin",
+        "createdAt": "2024-06-03T10:33:47.831Z",
+        "updatedAt": "2024-07-11T14:20:08.529Z",
+        "locationIds": [
+            "private-spgi-corporate-us-east"
+        ],
+        "automaticRetries": 0,
+        "createdBy": null,
+        "updatedBy": "GLb9eu7AcAE",
+        "type": "browser",
+        "customProperties": [
+            {
+                "key": "ProductName",
+                "value": "Spark"
+            }
+        ],
+        "lastRunStatus": "failed",
+        "lastRunAt": "2026-04-29T23:39:10.000Z",
+        "lastRunCoreMetricsPublishedAt": "2026-04-29T23:39:55.000Z",
+        "lastRunLocationId": "private-spgi-corporate-us-east",
+        "lastRunId": "1a7f43e7-975a-44d2-888c-09b14f3220c2",
+        "advancedSettings": {
+            "authentication": null,
+            "cookies": null,
+            "headers": null,
+            "hostOverrides": null,
+            "userAgent": null,
+            "verifyCertificates": true,
+            "collectInteractiveMetrics": true,
+            "chromeFlags": null,
+            "excludedFiles": null,
+            "certificateIds": []
+        },
+        "transactions": [
+            {
+                "name": "Synthetic transaction 1",
+                "steps": [
+                    {
+                        "name": "Go to URL",
+                        "type": "go_to_url",
+                        "url": "https://sparkuat.spglobal.com//assist",
+                        "action": "go_to_url",
+                        "options": {
+                            "url": "https://sparkuat.spglobal.com//assist"
+                        }
+                    },
+                    {
+                        "name": "Go to URL",
+                        "type": "go_to_url",
+                        "url": "https://spglobal.okta.com/oauth2/default/v1/authorize?response_type=code&client_id=0oaewx2xlntOc1QTk5d7&redirect_uri=https%3A%2F%2Fspark.spglobal.com%2F.auth%2Flogin%2FOKTA%2Fcallback&nonce=9267c3bbb9aa4d199274596b7b5de46a_20240507062018&state=redir%3D%252Fassist&scope=openid+profile+email",
+                        "action": "go_to_url",
+                        "options": {
+                            "url": "https://spglobal.okta.com/oauth2/default/v1/authorize?response_type=code&client_id=0oaewx2xlntOc1QTk5d7&redirect_uri=https%3A%2F%2Fspark.spglobal.com%2F.auth%2Flogin%2FOKTA%2Fcallback&nonce=9267c3bbb9aa4d199274596b7b5de46a_20240507062018&state=redir%3D%252Fassist&scope=openid+profile+email"
+                        }
+                    },
+                    {
+                        "name": "Username",
+                        "type": "enter_value",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": true,
+                        "selectorType": "id",
+                        "selector": "input28",
+                        "value": "{{env.userID}}"
+                    },
+                    {
+                        "name": "Next",
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": true,
+                        "selectorType": "css",
+                        "selector": "div.o-form-button-bar > input"
+                    },
+                    {
+                        "name": null,
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": true,
+                        "selectorType": "id",
+                        "selector": "input59"
+                    },
+                    {
+                        "name": "Creds",
+                        "type": "enter_value",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": true,
+                        "selectorType": "id",
+                        "selector": "input59",
+                        "value": "{{env.svc_sparkassist_password2}}"
+                    },
+                    {
+                        "name": "Login Verify",
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": true,
+                        "selectorType": "css",
+                        "selector": "div.o-form-button-bar > input"
+                    }
+                ]
+            }
+        ],
+        "device": {
+            "id": 1,
+            "label": "Default Desktop",
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64; Splunk Synthetics) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.7444.175 Safari/537.36",
+            "viewportWidth": 1366,
+            "viewportHeight": 768,
+            "networkConnection": {
+                "description": "Unthrottled",
+                "uploadBandwidth": null,
+                "downloadBandwidth": null,
+                "latency": null,
+                "packetLoss": null
+            }
+        }
+    }
+}

@@ -1,0 +1,151 @@
+{
+    "test": {
+        "id": 4173,
+        "name": "o11y_store_test",
+        "active": true,
+        "frequency": 15,
+        "schedulingStrategy": "round_robin",
+        "createdAt": "2024-03-21T10:55:36.854Z",
+        "updatedAt": "2024-03-22T09:07:28.593Z",
+        "locationIds": [
+            "aws-us-east-1"
+        ],
+        "automaticRetries": 0,
+        "createdBy": null,
+        "updatedBy": null,
+        "type": "browser",
+        "customProperties": [
+            {
+                "key": "team",
+                "value": "vinod"
+            }
+        ],
+        "lastRunStatus": "failed",
+        "lastRunAt": "2026-04-29T23:28:54.000Z",
+        "lastRunCoreMetricsPublishedAt": "2026-04-29T23:29:07.000Z",
+        "lastRunLocationId": "aws-us-east-1",
+        "lastRunId": "5a833dad-a151-458d-8fd7-01cb7bd9e56f",
+        "advancedSettings": {
+            "authentication": null,
+            "cookies": null,
+            "headers": null,
+            "hostOverrides": null,
+            "userAgent": null,
+            "verifyCertificates": true,
+            "collectInteractiveMetrics": true,
+            "chromeFlags": null,
+            "excludedFiles": null,
+            "certificateIds": []
+        },
+        "transactions": [
+            {
+                "name": "Synthetic transaction 1",
+                "steps": [
+                    {
+                        "name": "Go to URL",
+                        "type": "go_to_url",
+                        "url": "http://pmrum.o11ystore.com/",
+                        "action": "go_to_url",
+                        "options": {
+                            "url": "http://pmrum.o11ystore.com/"
+                        }
+                    },
+                    {
+                        "name": "Click first product",
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": true,
+                        "selectorType": "css",
+                        "selector": "main > div > div > div:nth-of-type(2) > div:nth-of-type(1) a > div"
+                    },
+                    {
+                        "name": "Add first product to cart",
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": true,
+                        "selectorType": "css",
+                        "selector": "button"
+                    },
+                    {
+                        "name": "Product list",
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": true,
+                        "selectorType": "css",
+                        "selector": "main > div > div > div.mb-3 a"
+                    },
+                    {
+                        "name": "click second product",
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": true,
+                        "selectorType": "css",
+                        "selector": "div:nth-of-type(8) a > div"
+                    },
+                    {
+                        "name": "checkout",
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": true,
+                        "selectorType": "css",
+                        "selector": "button"
+                    },
+                    {
+                        "name": "select email box",
+                        "type": "click_element",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": true,
+                        "selectorType": "css",
+                        "selector": "div > div > div.py-3"
+                    },
+                    {
+                        "name": "add email address",
+                        "type": "enter_value",
+                        "waitForNav": false,
+                        "waitForNavTimeout": 50,
+                        "waitForNavTimeoutDefault": true,
+                        "selectorType": "id",
+                        "selector": "email",
+                        "value": "{{env.o11y_store_email}}"
+                    },
+                    {
+                        "name": "Make payment",
+                        "type": "click_element",
+                        "waitForNav": true,
+                        "waitForNavTimeout": 2000,
+                        "waitForNavTimeoutDefault": true,
+                        "selectorType": "css",
+                        "selector": "div > div > div.py-3 button"
+                    },
+                    {
+                        "name": "Order page loaded",
+                        "type": "assert_text_present",
+                        "maxWaitTime": 10000,
+                        "maxWaitTimeDefault": true,
+                        "value": "Your order is complete!"
+                    }
+                ]
+            }
+        ],
+        "device": {
+            "id": 1,
+            "label": "Default Desktop",
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64; Splunk Synthetics) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.7444.175 Safari/537.36",
+            "viewportWidth": 1366,
+            "viewportHeight": 768,
+            "networkConnection": {
+                "description": "Unthrottled",
+                "uploadBandwidth": null,
+                "downloadBandwidth": null,
+                "latency": null,
+                "packetLoss": null
+            }
+        }
+    }
+}
